@@ -1,8 +1,8 @@
 # thesis-project
 
 Instrucciones:
-1. Descarga y descomprime el .ZIP del proyecto
-<img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-03-24 a la(s) 16.01.03.png" width="900">
+1. Copia y clona el proyecto de https://github.com/ciretorres/thesis-project - automatic!
+<img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-03-24 a la(s) 16.01.03.png" width="800">
 2. Descarga Processing de la página oficial
 <img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-03-24 a la(s) 14.25.11.png" width="900">
 3. Abre el archivo Prototype_v1.pde
