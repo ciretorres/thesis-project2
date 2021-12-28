@@ -37,7 +37,7 @@ Torres-Velasco, E. O., Laureano-Cruces, A. L., Santillán-González, A. (2021). 
 El análisis de datos se puede consultar y contribuir desde: [thesis-project/Prototype_v1/data/HipparcosMainCatalogue.ipynb](https://github.com/ciretorres/thesis-project/blob/main/Prototype_v1/data/HipparcosMainCatalogue.ipynb)
 ## Notas
 
-La aplicación funciona para plataformas Windows, Mac y Linux. Incluso se puede instalar en dispositivo Android utilizando el modo debug en el ambiente de Processing :metal:
+La interfaz-interactiva funciona para plataformas Windows, Mac y Linux. Incluso se puede instalar en dispositivo Android utilizando el modo debug en el ambiente de Processing :metal:
 
 ## Contacto
 
