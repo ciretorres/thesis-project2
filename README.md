@@ -3,7 +3,7 @@
 ## Instrucciones:
 1. Descarga [Processing](https://processing.org/download) de la página oficial
   <img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-12-27 a la(s) 19.30.21.png" width="800">
-2. Clona o descarga el ZIP del proyecto de https://github.com/ciretorres/thesis-project en tu computadora :octocat:
+2. Clona el repositorio o descarga el ZIP del proyecto de https://github.com/ciretorres/thesis-project en tu computadora :octocat:
   <img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-03-24 a la(s) 16.01.03.png" width="800">
 3. Abre el archivo thesis-project/Prototype_v1/Prototype_v1.pde
   <img src="./Prototype_v1/data/captures/Captura de Pantalla 2021-03-24 a la(s) 14.49.27.png" width="800">
