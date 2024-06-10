@@ -1,5 +1,4 @@
 import peasy.*;
-
 /**
  * Prototype_v2
  * 
@@ -16,6 +15,10 @@ int distanciaCamera = 80;
 // importando HeadsUpDisplay
 HeadsUpDisplay HUD;
 
+// Colores
+color  baseColor = color(0);
+color currentColor = baseColor;
+
 /**
  * Método para configurar el entorno
  */
@@ -23,7 +26,9 @@ void setup() {
   println("hola");
   
   // tamaño de la pantalla
-  size(1366, 768, P3D);
+  //size(1366, 768, P3D);
+  size(1024, 640, P3D);
+  //fullScreen(P3D);
   // orientación
   orientation(LANDSCAPE);
   
@@ -39,19 +44,19 @@ void setup() {
 
   // iniciando interfaz gráfica
   HUD = new HeadsUpDisplay();
-
+  ellipseMode(CENTER);
 }
 /**
  * Método para dibujar mientras se ejecuta el entorno
  */
 void draw() {
-    // Color del fondo
-    background(0);  
+    // Color de fondo
+    background(currentColor);
 
     lights();  
 
     pushMatrix();
     // 
-    HUD.show(); 
+    HUD.display(); 
     popMatrix();  
 }

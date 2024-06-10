@@ -1,5 +1,5 @@
 class HeadsUpDisplay {
-    Button button = new Button();
+    Dialog instructions = new Dialog();
 
     HeadsUpDisplay() {
         // Constructor
@@ -8,11 +8,13 @@ class HeadsUpDisplay {
     /**
      * Método donde se renderea todo lo que se va a dibujar
      */
-    void show() {
+    void display() {
         camera.beginHUD();  
         // 
         //println("hola desde HUD");
-        button.show();
+        instructions.show();
+
+        
         camera.endHUD();
     }
 
