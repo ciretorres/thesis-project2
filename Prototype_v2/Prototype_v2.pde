@@ -40,8 +40,8 @@ void setup() {
   camera = new PeasyCam(this, distanciaCamera);
   // iniciando interfaz gráfica
   HUD = new HeadsUpDisplay();
-  // set ellipse location draw reference
-  ellipseMode(CENTER);
+
+
 }
 /**
  * Método para dibujar mientras se ejecuta el entorno
@@ -61,4 +61,8 @@ void draw() {
 
 
   popMatrix();
+}
+
+void mouseClicked() {
+  println("click");
 }
