@@ -1,65 +1,110 @@
-class Dialog {
-  int espaciado = 24;
+/**
+ * The Dialog show a rect that presents relevant
+ * information about the system.
+ */
 
+class Dialog {
+  String id, idBtnDos;
+  String textoDialog, textoBtnUno, textoBtnDos;
+  boolean conBtnCerrar, conBtnUno, conBtnDos, colorPrincipal;
+  
   // inicializa botón
-  Button buttonRect;
-  Button buttonRect2;
-  Button buttonCircle;
+  Button btnInstrucciones;
+  Button btnComenzar;
+  Button btnCerrar;
 
   // propiedades Dialogo
+  int dialogAncho = width - (width/2);
+  int dialogAlto = height - (height/3);
+  int dialogX = width/2 - (dialogAncho/2);
+  int dialogY = height/2 - (dialogAlto/2);
+  
   color dialogBackgroundColor = color(102, 102, 102, 191);
-  color dialogTextColor;
-  int dialogWidth = width - (width/2);                              
-  int dialogHeight = height - (height/3);                           
-  int dialogX = width/2 - (dialogWidth/2);                       
-  int dialogY = height/2 - (dialogHeight/2);                       
+  color dialogTextColor = color(0, 408, 612, 816);
+
   // propiedades botón rectángulo
-  int rectWidth = dialogWidth - (espaciado * 2);                 
-  int rectHeight = 72;                                           
-  int rectX = width/2 - (rectWidth/2);
-  int rectY = height/2 + (dialogHeight/2) - (rectHeight);
+  int buttonAncho = dialogAncho - (espaciado * 2);
+  int buttonAlto = 72;
+  int rectX = width/2 - (buttonAncho/2);
+  int rectY = height/2 + (dialogAlto/2) - (buttonAlto);
+
   // propiedades botón circulo
-  int circleSize = 88;                                             
-  int circleX = dialogX + dialogWidth - (circleSize/2) - espaciado;
-  int circleY = dialogY + (circleSize/2) + espaciado;        
+  int circleSize = 88;
+  int circleX = dialogX + dialogAncho - (circleSize/2) - espaciado;
+  int circleY = dialogY + (circleSize/2) + espaciado;
 
-  Dialog() {
+  Dialog(String id, String textoDialog, boolean conBtnCerrar, 
+    boolean conBtnUno, boolean conBtnDos, boolean colorPrincipal,
+    String idBtnDos, String textoBtnDos) {    
     // Constructor
-    buttonRect = new Button(
-      rectWidth, 
-      rectHeight, 
-      rectX, 
-      rectY, 
-      color(255,255,255,0), 
-      "Instrucciones", 32
-    );
-    buttonRect2 = new Button(
-      rectWidth, 
-      rectHeight, 
-      rectX, 
-      rectY - rectHeight-espaciado, 
-      color(0), 
-      "Comenzar", 64
-    );
+    this.id = id;
+    this.textoDialog = textoDialog;
+    this.conBtnCerrar = conBtnCerrar;
+    this.conBtnUno = conBtnUno;
+    this.conBtnDos = conBtnDos;
+    this.colorPrincipal = colorPrincipal;
+    this.idBtnDos = idBtnDos;
+    this.textoBtnDos = textoBtnDos;
 
-    buttonCircle = new Button(circleSize, circleX, circleY);
+    if (conBtnCerrar) {
+      btnCerrar = new Button("btn_cerrar", circleSize, circleX, circleY);
+    }
+  
+    if (conBtnUno) {
+      btnComenzar = new Button(
+        "btn_comenzar",
+        buttonAncho,
+        buttonAlto,
+        rectX,
+        rectY - buttonAlto-espaciado,
+        color(0),
+        "Comenzar", 56
+      );
+    }
+
+    if (conBtnDos) {
+      color colorButtonFondo;
+      int tamanioFuente;
+      if (colorPrincipal) {
+        colorButtonFondo = color(0);
+        tamanioFuente = 56;
+      } else {
+        colorButtonFondo = color(255, 255, 255, 0);
+        tamanioFuente = 24;
+      }
+      btnInstrucciones = new Button(
+        idBtnDos,
+        buttonAncho,
+        buttonAlto,
+        rectX,
+        rectY,
+        colorButtonFondo,
+        textoBtnDos, tamanioFuente
+      );
+    }
   }
 
   /**
    * Método donde se renderea todo lo que se va a dibujar
    */
   void show() {
-    // Dibuja dialogo
+    // Dibuja rect dialogo
     fill(dialogBackgroundColor);
-    rect(dialogX, dialogY, dialogWidth, dialogHeight);
+    rect(dialogX, dialogY, dialogAncho, dialogAlto, borderRadius);
 
-    buttonRect.render();
-    buttonRect2.render();
-    buttonCircle.render();
+    // Botones
+    if (conBtnDos) btnInstrucciones.render();
+    if (conBtnUno) btnComenzar.render();
+    if (conBtnCerrar) btnCerrar.render();
 
-    textSize(72);
+    // texto dialog
+    textSize(56);
     textAlign(LEFT, TOP);
-    fill(0, 408, 612, 816);
-    text("Bienvenido", dialogX+espaciado, dialogY);
+    fill(dialogTextColor);
+    text(textoDialog, dialogX + espaciado, dialogY);
+  }
+
+  void update() {
+    
   }
 }

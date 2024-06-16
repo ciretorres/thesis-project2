@@ -1,52 +1,59 @@
+/**
+ * Button allows to draw interactable rect or circle.
+ */
 class Button {
-  int espaciado = 24;
+  String id;
+  String forma;
 
-  int rectX, rectY;      // Position of square button
-  int circleX, circleY;  // Position of circle button
-  int textX, textY;      // Position of square button
-  String rectText;
+  int rectAncho, rectAlto;
+  int rectX, rectY;
+  boolean rectOver = false;
+  boolean rectClick = false;
+
   int textSize;
-  int rectWidth, rectHeight, circleSize; // Diameter of circle
+  String rectText;
+  int textX, textY;
+
   color rectColor, circleColor;
   color rectHighlight, circleHighlight;
 
-  color currentColor;
-
-  boolean rectOver = false;
+  int circleSize;
+  int circleX, circleY;
   boolean circleOver = false;
-
-  boolean rectClick = false;
   boolean circleClick = false;
-
-  String forma = "circle";
 
   Button() {
     // Constructor
   }
 
-  Button(int ancho, int alto, int xPosicion, int yPosicion, color rectaColor, String texto, int tamanoTexto) {
+  Button(String id, int rectAncho, int rectAlto, int rectX,
+    int rectY, color rectColor, String rectText, int textSize) {
     // Constructor
-    forma = "rect";
-    rectWidth = ancho;
-    rectHeight = alto;
-    rectX = xPosicion;
-    rectY = yPosicion - espaciado;
-    rectColor = rectaColor;
-    rectHighlight = color(51);
-    textX = width/2;
-    rectText = texto;
-    textSize = tamanoTexto;
-    textY = rectY + (rectHeight/2) - (textSize/5);
+    this.id = id;
+    this.forma = "rect";
+    this.rectAncho = rectAncho;
+    this.rectAlto = rectAlto;
+    this.rectX = rectX;
+    this.rectY = rectY - espaciado;
+
+    this.rectColor = rectColor;
+    this.rectHighlight = color(51);
+
+    this.textX = width/2;
+    this.rectText = rectText;
+    this.textSize = textSize;
+    this.textY = this.rectY + (this.rectAlto/2) - (this.textSize/5);
   }
 
-  Button(int radio, int xPosicion, int yPosicion) {
+  Button(String id, int circleSize, int circleX, int circleY) {
     // Constructor
+    this.id = id;
     forma = "circle";
-    circleSize = radio;
-    circleColor = color(255);
-    circleHighlight = color(204);
-    circleX = xPosicion;
-    circleY = yPosicion;
+    this.circleSize = circleSize;
+    this.circleColor = color(255);
+    this.circleHighlight = color(204);
+    this.circleX = circleX;
+    this.circleY = circleY;
 
     // set ellipse location draw reference
     ellipseMode(CENTER);
@@ -54,7 +61,7 @@ class Button {
 
   void render() {
     update(mouseX, mouseY);
-
+    // Dibuja botones
     switch(forma) {
     case "rect":
       if (rectOver) {
@@ -62,8 +69,10 @@ class Button {
       } else {
         fill(rectColor);
       }
+      // figura
       stroke(255);
-      rect(rectX, rectY, rectWidth, rectHeight);
+      rect(rectX, rectY, rectAncho, rectAlto);
+      // texto
       textSize(textSize);
       textAlign(CENTER, CENTER);
       fill(0, 408, 612, 816);
@@ -75,6 +84,7 @@ class Button {
       } else {
         fill(circleColor);
       }
+      // figura
       stroke(0);
       ellipse(circleX, circleY, circleSize, circleSize);
       break;
@@ -89,7 +99,7 @@ class Button {
     if ( overCircle(circleX, circleY, circleSize) ) {
       circleOver = true;
       rectOver = false;
-    } else if ( overRect(rectX, rectY, rectWidth, rectHeight) ) {
+    } else if ( overRect(rectX, rectY, rectAncho, rectAlto) ) {
       rectOver = true;
       circleOver = false;
     } else {
@@ -102,21 +112,47 @@ class Button {
   void mousePressed() {
     if (mousePressed == true && mouseButton == LEFT) {
       if (circleOver) {
-        println("presioné circle");
+        //println("presioné circle");
         circleClick = true;
         rectClick = false;
+
+        switch(id) {
+        case "btn_cerrar":
+          opcionDialogAbierto = 3;
+          break;
+        default: //
+        }
       }
       if (rectOver) {
-        println("presioné rect");
+        //println("presioné rect");
         rectClick = true;
         circleClick = false;
+
+        switch(id) {
+        case "btn_instrucciones":
+          println("aca");
+          opcionDialogAbierto = 1;
+          break;
+        case "btn_listo":
+          println("alla");
+          // opcionDialogAbierto = 4;
+          break;
+        case "btn_comenzar":
+          opcionDialogAbierto = 2;
+          break;
+        default: //
+        }
       }
     } else {
       rectClick = circleClick = false;
     }
   }
 
-  /** */
+
+  /**
+   * Método que regresa true o false si esta el cursor
+   * encima del rect.
+   */
   boolean overRect(int x, int y, int width, int height) {
     if (mouseX >= x && mouseX <= x+width &&
       mouseY >= y && mouseY <= y+height) {
@@ -125,7 +161,10 @@ class Button {
       return false;
     }
   }
-  /** */
+  /**
+   * Método que regresa true o false si esta el cursor
+   * encima del circle.
+   */
   boolean overCircle(int x, int y, int diameter) {
     float disX = x - mouseX;
     float disY = y - mouseY;
