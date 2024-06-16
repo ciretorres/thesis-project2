@@ -4,7 +4,7 @@
  */
 int espaciado = 24;
 int borderRadius = 20;
-int opcionDialogAbierto = 0;
+int abrirDialogAbierto = 0;
 
 class HeadsUpDisplay {
   // dialogo 1
@@ -46,7 +46,7 @@ class HeadsUpDisplay {
     camera.beginHUD();
     //
     // abrir dialog
-    switch(opcionDialogAbierto) {
+    switch(abrirDialogAbierto) {
     case 0:
       dialogBienvenido.show();
       break;

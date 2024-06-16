@@ -1,6 +1,8 @@
 /**
  * Button allows to draw interactable rect or circle.
  */
+int opcionDialogAbierto = 0;
+
 class Button {
   String id;
   String forma;
@@ -130,12 +132,10 @@ class Button {
 
         switch(id) {
         case "btn_instrucciones":
-          println("aca");
           opcionDialogAbierto = 1;
           break;
         case "btn_listo":
-          println("alla");
-          // opcionDialogAbierto = 4;
+          opcionDialogAbierto = 4;
           break;
         case "btn_comenzar":
           opcionDialogAbierto = 2;

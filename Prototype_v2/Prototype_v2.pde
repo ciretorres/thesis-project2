@@ -51,7 +51,7 @@ void draw() {
   // Luz del ambiente predeterminada
   lights();
 
-  // PushPop the current transformation matrix onto the matrix stack. 
+  // PushPop the current transformation matrix onto the matrix stack.
   // https://processing.org/reference/pushMatrix_.html
   // https://processing.org/reference/popMatrix_.html
   pushMatrix();
@@ -65,4 +65,5 @@ void draw() {
 void mouseClicked() {
   println("click");
   println(opcionDialogAbierto);
+  abrirDialogAbierto = opcionDialogAbierto;
 }
