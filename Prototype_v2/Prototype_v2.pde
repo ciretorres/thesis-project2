@@ -5,17 +5,14 @@
  * astronómico. En este caso el módulo distancia que relaciona
  * la distancia con el brillo de una estrella.
  */
-// importando peasy
-import peasy.*;
+import peasy.*; // importando peasy
 PeasyCam camera; // declarando Peasycam
 int distanciaCamera = 80; // distancia en pixeles desde el origen
 
 HeadsUpDisplay HUD; // importando HeadsUpDisplay
 
-Button btn;
-
 // Estilos
-color  baseColor = color(0);
+color baseColor = color(0);
 //color currentColor = baseColor;
 color backgroundColor = baseColor;
 
@@ -40,7 +37,7 @@ void setup() {
   camera = new PeasyCam(this, distanciaCamera);
   // iniciando interfaz gráfica
   HUD = new HeadsUpDisplay();
-  btn = new Button();
+  
 }
 /**
  * Método para dibujar mientras se ejecuta el entorno
@@ -65,5 +62,5 @@ void draw() {
 void mouseClicked() {
   println("click");
   println(opcionDialogAbierto);
-  abrirDialogAbierto = opcionDialogAbierto;
+  opcionDialogAbierto = abrirDialogAbierto;
 }

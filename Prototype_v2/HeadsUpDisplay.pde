@@ -1,13 +1,14 @@
 /**
- * The HeadsUpDisplay is about the part of the software which interacts directly
- * with the users interface. It controls the dialog between the backend and frontend.
+ * The HeadsUpDisplay is about the part of the software 
+ * which interacts directly with the users interface. 
+ * It controls the dialog between the backend and frontend.
  */
 int espaciado = 24;
 int borderRadius = 20;
-int abrirDialogAbierto = 0;
+int opcionDialogAbierto = 0;
 
 class HeadsUpDisplay {
-  // dialogo 1
+  // dialogo de Bienvenida
   Dialog dialogBienvenido = new Dialog(
     "dialog_bienvenido",  // id
     "Bievenida",          // textoDialog
@@ -19,7 +20,7 @@ class HeadsUpDisplay {
     "Instrucciones"       // textoBtnDos
   );
   
-  // dialogo 2
+  // dialogo de Instrucciones
   Dialog dialogInstrucciones = new Dialog(
     "dialog_instrucciones",  // id
     "Instrucciones",         // textoDialog
@@ -36,7 +37,7 @@ class HeadsUpDisplay {
   }
 
   /**
-   * Método donde se renderea todo lo que se va a dibujar
+   * Método donde se renderea todo lo que se va a dibujar.
    */
   void display() {
     update();
@@ -46,7 +47,7 @@ class HeadsUpDisplay {
     camera.beginHUD();
     //
     // abrir dialog
-    switch(abrirDialogAbierto) {
+    switch(opcionDialogAbierto) {
     case 0:
       dialogBienvenido.show();
       break;
@@ -65,6 +66,7 @@ class HeadsUpDisplay {
    * Método update
    */
   void update() {
+
   }
 }
 

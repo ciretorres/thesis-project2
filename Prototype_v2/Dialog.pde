@@ -1,5 +1,5 @@
 /**
- * The Dialog show a rect that presents relevant
+ * The Dialog show a rectangle that presents relevant
  * information about the system.
  */
 
@@ -104,6 +104,9 @@ class Dialog {
     text(textoDialog, dialogX + espaciado, dialogY);
   }
 
+  /**
+   * Método update
+   */
   void update() {
     
   }

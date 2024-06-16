@@ -1,7 +1,7 @@
 /**
- * Button allows to draw interactable rect or circle.
+ * Button allows to draw an interactable rect or circle.
  */
-int opcionDialogAbierto = 0;
+int abrirDialogAbierto = 0;
 
 class Button {
   String id;
@@ -30,7 +30,7 @@ class Button {
 
   Button(String id, int rectAncho, int rectAlto, int rectX,
     int rectY, color rectColor, String rectText, int textSize) {
-    // Constructor
+    // Constructor rectangle
     this.id = id;
     this.forma = "rect";
     this.rectAncho = rectAncho;
@@ -48,7 +48,7 @@ class Button {
   }
 
   Button(String id, int circleSize, int circleX, int circleY) {
-    // Constructor
+    // Constructor circulo
     this.id = id;
     forma = "circle";
     this.circleSize = circleSize;
@@ -61,8 +61,13 @@ class Button {
     ellipseMode(CENTER);
   }
 
+  /**
+   * Método donde se renderea todo lo que se va a dibujar
+   */
   void render() {
+    // actualiza posición del cursor
     update(mouseX, mouseY);
+
     // Dibuja botones
     switch(forma) {
     case "rect":
@@ -114,31 +119,29 @@ class Button {
   void mousePressed() {
     if (mousePressed == true && mouseButton == LEFT) {
       if (circleOver) {
-        //println("presioné circle");
         circleClick = true;
         rectClick = false;
 
         switch(id) {
         case "btn_cerrar":
-          opcionDialogAbierto = 3;
+          abrirDialogAbierto = 3;
           break;
         default: //
         }
       }
       if (rectOver) {
-        //println("presioné rect");
         rectClick = true;
         circleClick = false;
 
         switch(id) {
         case "btn_instrucciones":
-          opcionDialogAbierto = 1;
+          abrirDialogAbierto = 1;
           break;
         case "btn_listo":
-          opcionDialogAbierto = 4;
+          abrirDialogAbierto = 4;
           break;
         case "btn_comenzar":
-          opcionDialogAbierto = 2;
+          abrirDialogAbierto = 2;
           break;
         default: //
         }
