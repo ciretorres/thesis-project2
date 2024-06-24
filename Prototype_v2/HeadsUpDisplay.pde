@@ -9,31 +9,33 @@ int opcionDialogAbierto = 0;
 
 class HeadsUpDisplay {
   // dialogo de Bienvenida
-  Dialog dialogBienvenido = new Dialog(
-    "dialog_bienvenido",  // id
-    "Bievenida",          // textoDialog
-    false,                // conBtnCerrar
-    true,                 // conBtnUno
-    true,                 // conBtnDos
-    false,                // colorPrincipal
-    "btn_instrucciones",  // idBtnDos
-    "Instrucciones"       // textoBtnDos
-  );
-  
+  Dialog dialogBienvenido = new Dialog();  
   // dialogo de Instrucciones
-  Dialog dialogInstrucciones = new Dialog(
-    "dialog_instrucciones",  // id
-    "Instrucciones",         // textoDialog
-    true,                    // conBtnCerrar
-    false,                   // conBtnUno
-    true,                    // conBtnDos
-    true,                    // colorPrincipal
-    "btn_listo",             // idBtnDos
-    "Listo"                  // textoBtnDos
-  );
+  Dialog dialogInstrucciones = new Dialog();
 
   HeadsUpDisplay() {
-    // Constructor
+    // Constructor        
+    // construye dialogo de Bienvenida
+    // TODO: intentar hacer función
+    dialogBienvenido.id = "dialog_bienvenido";
+    dialogBienvenido.textoDialog = "Bievenida";
+    dialogBienvenido.conBtnCerrar = false;
+    dialogBienvenido.conBtnUno = true;
+    dialogBienvenido.conBtnDos = true;
+    dialogBienvenido.colorPrincipal = false;
+    dialogBienvenido.idBtnDos = "btn_instrucciones";
+    dialogBienvenido.textoBtnDos = "Instrucciones";
+    
+    // construye dialogo de Instrucciones
+    // TODO: intentar hacer función
+    dialogInstrucciones.id = "dialog_instrucciones";
+    dialogInstrucciones.textoDialog = "Instrucciones";
+    dialogInstrucciones.conBtnCerrar = true;
+    dialogInstrucciones.conBtnUno = false;
+    dialogInstrucciones.conBtnDos = true;
+    dialogInstrucciones.colorPrincipal = false;
+    dialogInstrucciones.idBtnDos = "btn_listo";
+    dialogInstrucciones.textoBtnDos = "Listo";
   }
 
   /**

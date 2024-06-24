@@ -1,16 +1,17 @@
 /**
  * Button allows to draw an interactable rect or circle.
  */
-int abrirDialogAbierto = 0;
 
 class Button {
+  Over over = new Over();
+  Mouse mouse = new Mouse();
+
   String id;
   String forma;
 
   int rectAncho, rectAlto;
   int rectX, rectY;
   boolean rectOver = false;
-  boolean rectClick = false;
 
   int textSize;
   String rectText;
@@ -22,7 +23,6 @@ class Button {
   int circleSize;
   int circleX, circleY;
   boolean circleOver = false;
-  boolean circleClick = false;
 
   Button() {
     // Constructor
@@ -103,78 +103,16 @@ class Button {
    */
   void update(int x, int y) {
     // opera si se hace hover en el circulo o el rec y avisa
-    if ( overCircle(circleX, circleY, circleSize) ) {
+    if ( over.circle(circleX, circleY, circleSize) ) {
       circleOver = true;
       rectOver = false;
-    } else if ( overRect(rectX, rectY, rectAncho, rectAlto) ) {
+    } else if ( over.rect(rectX, rectY, rectAncho, rectAlto) ) {
       rectOver = true;
       circleOver = false;
     } else {
       circleOver = rectOver = false;
     }
     // opera si presiona el mouse y debe avisar
-    mousePressed();
-  }
-  /** */
-  void mousePressed() {
-    if (mousePressed == true && mouseButton == LEFT) {
-      if (circleOver) {
-        circleClick = true;
-        rectClick = false;
-
-        switch(id) {
-        case "btn_cerrar":
-          abrirDialogAbierto = 3;
-          break;
-        default: //
-        }
-      }
-      if (rectOver) {
-        rectClick = true;
-        circleClick = false;
-
-        switch(id) {
-        case "btn_instrucciones":
-          abrirDialogAbierto = 1;
-          break;
-        case "btn_listo":
-          abrirDialogAbierto = 4;
-          break;
-        case "btn_comenzar":
-          abrirDialogAbierto = 2;
-          break;
-        default: //
-        }
-      }
-    } else {
-      rectClick = circleClick = false;
-    }
-  }
-
-
-  /**
-   * Método que regresa true o false si esta el cursor
-   * encima del rect.
-   */
-  boolean overRect(int x, int y, int width, int height) {
-    if (mouseX >= x && mouseX <= x+width &&
-      mouseY >= y && mouseY <= y+height) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  /**
-   * Método que regresa true o false si esta el cursor
-   * encima del circle.
-   */
-  boolean overCircle(int x, int y, int diameter) {
-    float disX = x - mouseX;
-    float disY = y - mouseY;
-    if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
-      return true;
-    } else {
-      return false;
-    }
+    mouse.pressed(id, circleOver, rectOver);
   }
 }

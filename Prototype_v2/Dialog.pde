@@ -7,7 +7,7 @@ class Dialog {
   String id, idBtnDos;
   String textoDialog, textoBtnUno, textoBtnDos;
   boolean conBtnCerrar, conBtnUno, conBtnDos, colorPrincipal;
-  
+
   // inicializa botón
   Button btnInstrucciones;
   Button btnComenzar;
@@ -18,7 +18,7 @@ class Dialog {
   int dialogAlto = height - (height/3);
   int dialogX = width/2 - (dialogAncho/2);
   int dialogY = height/2 - (dialogAlto/2);
-  
+
   color dialogBackgroundColor = color(102, 102, 102, 191);
   color dialogTextColor = color(0, 408, 612, 816);
 
@@ -33,55 +33,8 @@ class Dialog {
   int circleX = dialogX + dialogAncho - (circleSize/2) - espaciado;
   int circleY = dialogY + (circleSize/2) + espaciado;
 
-  Dialog(String id, String textoDialog, boolean conBtnCerrar, 
-    boolean conBtnUno, boolean conBtnDos, boolean colorPrincipal,
-    String idBtnDos, String textoBtnDos) {    
+  Dialog() {
     // Constructor
-    this.id = id;
-    this.textoDialog = textoDialog;
-    this.conBtnCerrar = conBtnCerrar;
-    this.conBtnUno = conBtnUno;
-    this.conBtnDos = conBtnDos;
-    this.colorPrincipal = colorPrincipal;
-    this.idBtnDos = idBtnDos;
-    this.textoBtnDos = textoBtnDos;
-
-    if (conBtnCerrar) {
-      btnCerrar = new Button("btn_cerrar", circleSize, circleX, circleY);
-    }
-  
-    if (conBtnUno) {
-      btnComenzar = new Button(
-        "btn_comenzar",
-        buttonAncho,
-        buttonAlto,
-        rectX,
-        rectY - buttonAlto-espaciado,
-        color(0),
-        "Comenzar", 56
-      );
-    }
-
-    if (conBtnDos) {
-      color colorButtonFondo;
-      int tamanioFuente;
-      if (colorPrincipal) {
-        colorButtonFondo = color(0);
-        tamanioFuente = 56;
-      } else {
-        colorButtonFondo = color(255, 255, 255, 0);
-        tamanioFuente = 24;
-      }
-      btnInstrucciones = new Button(
-        idBtnDos,
-        buttonAncho,
-        buttonAlto,
-        rectX,
-        rectY,
-        colorButtonFondo,
-        textoBtnDos, tamanioFuente
-      );
-    }
   }
 
   /**
@@ -91,6 +44,44 @@ class Dialog {
     // Dibuja rect dialogo
     fill(dialogBackgroundColor);
     rect(dialogX, dialogY, dialogAncho, dialogAlto, borderRadius);
+
+    // TODO: revisar si se puede unir con lo de abajo o hacerlo función
+    if (conBtnCerrar) {
+      btnCerrar = new Button("btn_cerrar", circleSize, circleX, circleY);
+    }
+    if (conBtnUno) {
+      btnComenzar = new Button(
+        "btn_comenzar",
+        buttonAncho,
+        buttonAlto,
+        rectX,
+        rectY - buttonAlto-espaciado,
+        color(0),
+        "Comenzar", 56
+        );
+    }
+    if (conBtnDos) {
+      color colorButtonFondo;
+      int tamanioFuente;
+
+      if (colorPrincipal) {
+        colorButtonFondo = color(0);
+        tamanioFuente = 56;
+      } else {
+        colorButtonFondo = color(255, 255, 255, 0);
+        tamanioFuente = 24;
+      }
+
+      btnInstrucciones = new Button(
+        idBtnDos,
+        buttonAncho,
+        buttonAlto,
+        rectX,
+        rectY,
+        colorButtonFondo,
+        textoBtnDos, tamanioFuente
+        );
+    }
 
     // Botones
     if (conBtnDos) btnInstrucciones.render();
@@ -108,6 +99,5 @@ class Dialog {
    * Método update
    */
   void update() {
-    
   }
 }
