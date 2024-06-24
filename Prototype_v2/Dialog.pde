@@ -4,23 +4,30 @@
  */
 
 class Dialog {
-  String id, idBtnDos;
-  String textoDialog, textoBtnUno, textoBtnDos;
-  boolean conBtnCerrar, conBtnUno, conBtnDos, colorPrincipal;
+  boolean fullScreen = width > 1366;
+  // propiedades Dialogo
+  String id;
+  String tituloDialog, textoDialog;
+  color dialogTextColor;
+
+  color dialogBackgroundColor = color(102, 102, 102, 191);
+  int dialogAncho = width - (width/2);
+  int dialogAlto = height - (height/3);
+  int dialogPosicionX = width/2 - (dialogAncho/2);
+  int dialogPosicionY = height/2 - (dialogAlto/2);
+
+  // propiedades botones
+  boolean conBtnCerrar, conBtnUno, conBtnDos, conColorPrincipal;
+
+  String idBtnDos;
+  String textoBtnUno;
+  String textoBtnDos;
 
   // inicializa botón
   Button btnInstrucciones;
   Button btnComenzar;
   Button btnCerrar;
 
-  // propiedades Dialogo
-  int dialogAncho = width - (width/2);
-  int dialogAlto = height - (height/3);
-  int dialogX = width/2 - (dialogAncho/2);
-  int dialogY = height/2 - (dialogAlto/2);
-
-  color dialogBackgroundColor = color(102, 102, 102, 191);
-  color dialogTextColor = color(0, 408, 612, 816);
 
   // propiedades botón rectángulo
   int buttonAncho = dialogAncho - (espaciado * 2);
@@ -30,11 +37,13 @@ class Dialog {
 
   // propiedades botón circulo
   int circleSize = 88;
-  int circleX = dialogX + dialogAncho - (circleSize/2) - espaciado;
-  int circleY = dialogY + (circleSize/2) + espaciado;
+  int circleX = dialogPosicionX + dialogAncho - (circleSize/2) - espaciado;
+  int circleY = dialogPosicionY + (circleSize/2) + espaciado;
 
   Dialog() {
     // Constructor
+    if (fullScreen) redimensiona();
+
   }
 
   /**
@@ -43,11 +52,13 @@ class Dialog {
   void show() {
     // Dibuja rect dialogo
     fill(dialogBackgroundColor);
-    rect(dialogX, dialogY, dialogAncho, dialogAlto, borderRadius);
+    rect(dialogPosicionX, dialogPosicionY, dialogAncho, dialogAlto, borderRadius);
 
+    // Botones
     // TODO: revisar si se puede unir con lo de abajo o hacerlo función
     if (conBtnCerrar) {
       btnCerrar = new Button("btn_cerrar", circleSize, circleX, circleY);
+      btnCerrar.render();
     }
     if (conBtnUno) {
       btnComenzar = new Button(
@@ -59,12 +70,13 @@ class Dialog {
         color(0),
         "Comenzar", 56
         );
+      btnComenzar.render();
     }
     if (conBtnDos) {
       color colorButtonFondo;
       int tamanioFuente;
 
-      if (colorPrincipal) {
+      if (conColorPrincipal) {
         colorButtonFondo = color(0);
         tamanioFuente = 56;
       } else {
@@ -81,23 +93,35 @@ class Dialog {
         colorButtonFondo,
         textoBtnDos, tamanioFuente
         );
+      btnInstrucciones.render();
     }
 
-    // Botones
-    if (conBtnDos) btnInstrucciones.render();
-    if (conBtnUno) btnComenzar.render();
-    if (conBtnCerrar) btnCerrar.render();
-
-    // texto dialog
-    textSize(56);
+    // titulo dialog
+    textSize(tituloSize);
     textAlign(LEFT, TOP);
     fill(dialogTextColor);
-    text(textoDialog, dialogX + espaciado, dialogY);
+    text(tituloDialog, dialogPosicionX + espaciado, dialogPosicionY);
+    // texto dialog
+    textSize(textoSize);
+    text(textoDialog, dialogPosicionX + espaciado, dialogPosicionY + tituloSize + espaciado);
   }
 
   /**
-   * Método update
+   * Método para redimensionar y reposicionar todo, si el ancho de la pantalla está fullscreen
    */
-  void update() {
+  void redimensiona() {
+    println("la pantalla es más ancha que 1366px");
+    // dialog
+    dialogAncho = 683;
+    dialogAlto = 512;
+    dialogPosicionX = width/2 - (dialogAncho/2);
+    dialogPosicionY = height/2 - (dialogAlto/2);
+    // boton rect
+    buttonAncho = dialogAncho - (espaciado * 2);
+    rectX = width/2 - (buttonAncho/2);
+    rectY = height/2 + (dialogAlto/2) - (buttonAlto);
+    // boton circle
+    circleX = dialogPosicionX + dialogAncho - (circleSize/2) - espaciado;
+    circleY = dialogPosicionY + (circleSize/2) + espaciado;
   }
 }

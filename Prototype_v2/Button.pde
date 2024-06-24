@@ -9,19 +9,24 @@ class Button {
   String id;
   String forma;
 
-  int rectAncho, rectAlto;
-  int rectX, rectY;
+  int rectAncho;
+  int rectAlto;
+  int rectX;
+  int rectY;  
+  color rectColor;
+  color rectHighlight;
   boolean rectOver = false;
 
   int textSize;
   String rectText;
-  int textX, textY;
-
-  color rectColor, circleColor;
-  color rectHighlight, circleHighlight;
+  int textX;
+  int textY;
 
   int circleSize;
-  int circleX, circleY;
+  int circleX;
+  int circleY;
+  color circleColor;
+  color circleHighlight;
   boolean circleOver = false;
 
   Button() {

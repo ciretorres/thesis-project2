@@ -3,9 +3,12 @@
  * which interacts directly with the users interface. 
  * It controls the dialog between the backend and frontend.
  */
+int opcionDialogAbierto = 0;
+
 int espaciado = 24;
 int borderRadius = 20;
-int opcionDialogAbierto = 0;
+int tituloSize = 56;
+int textoSize = 24;
 
 class HeadsUpDisplay {
   // dialogo de Bienvenida
@@ -18,22 +21,29 @@ class HeadsUpDisplay {
     // construye dialogo de Bienvenida
     // TODO: intentar hacer función
     dialogBienvenido.id = "dialog_bienvenido";
-    dialogBienvenido.textoDialog = "Bievenida";
+    dialogBienvenido.tituloDialog = "Bievenida";
+    dialogBienvenido.textoDialog = "texto";
+    dialogBienvenido.dialogTextColor = color(0, 408, 612, 816);
+
     dialogBienvenido.conBtnCerrar = false;
     dialogBienvenido.conBtnUno = true;
     dialogBienvenido.conBtnDos = true;
-    dialogBienvenido.colorPrincipal = false;
+
+    dialogBienvenido.conColorPrincipal = false;
+
     dialogBienvenido.idBtnDos = "btn_instrucciones";
     dialogBienvenido.textoBtnDos = "Instrucciones";
     
     // construye dialogo de Instrucciones
     // TODO: intentar hacer función
     dialogInstrucciones.id = "dialog_instrucciones";
-    dialogInstrucciones.textoDialog = "Instrucciones";
+    dialogInstrucciones.tituloDialog = "Instrucciones";
+    dialogInstrucciones.textoDialog = "";
+    dialogInstrucciones.dialogTextColor = color(0, 408, 612, 816);
     dialogInstrucciones.conBtnCerrar = true;
     dialogInstrucciones.conBtnUno = false;
     dialogInstrucciones.conBtnDos = true;
-    dialogInstrucciones.colorPrincipal = false;
+    dialogInstrucciones.conColorPrincipal = true;
     dialogInstrucciones.idBtnDos = "btn_listo";
     dialogInstrucciones.textoBtnDos = "Listo";
   }

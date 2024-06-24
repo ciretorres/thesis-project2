@@ -21,9 +21,9 @@ color backgroundColor = baseColor;
  */
 void setup() {
   // tamaño de la pantalla
-  //size(1366, 768, P3D);
+  // size(1366, 768, P3D);
   size(1024, 640, P3D);
-  //fullScreen(P3D);
+  // fullScreen(P3D);
 
   orientation(LANDSCAPE); // orientación de la pantalla
   frameRate(60);
