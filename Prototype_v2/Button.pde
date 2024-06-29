@@ -12,29 +12,30 @@ class Button {
   int rectAncho;
   int rectAlto;
   int rectX;
-  int rectY;  
+  int rectY;
   color rectColor;
   color rectHighlight;
+  String rectText;
+  int rectTextSize;
+  int rectTextX;
+  int rectTextY;
   boolean rectOver = false;
 
-  int textSize;
-  String rectText;
-  int textX;
-  int textY;
-
   int circleSize;
-  int circleX;
-  int circleY;
   color circleColor;
   color circleHighlight;
+  int circleX;
+  int circleY;
   boolean circleOver = false;
+
+  int borde;
 
   Button() {
     // Constructor
   }
 
   Button(String id, int rectAncho, int rectAlto, int rectX,
-    int rectY, color rectColor, String rectText, int textSize) {
+    int rectY, color rectColor, String rectText, int rectTextSize, int borde) {
     // Constructor rectangle
     this.id = id;
     this.forma = "rect";
@@ -46,24 +47,12 @@ class Button {
     this.rectColor = rectColor;
     this.rectHighlight = color(51);
 
-    this.textX = width/2;
+    this.rectTextX = width/2;
     this.rectText = rectText;
-    this.textSize = textSize;
-    this.textY = this.rectY + (this.rectAlto/2) - (this.textSize/5);
-  }
+    this.rectTextSize = rectTextSize;
+    this.rectTextY = this.rectY + (this.rectAlto/2) - (this.rectTextSize/5);
 
-  Button(String id, int circleSize, int circleX, int circleY) {
-    // Constructor circulo
-    this.id = id;
-    forma = "circle";
-    this.circleSize = circleSize;
-    this.circleColor = color(255);
-    this.circleHighlight = color(204);
-    this.circleX = circleX;
-    this.circleY = circleY;
-
-    // set ellipse location draw reference
-    ellipseMode(CENTER);
+    this.borde = borde;
   }
 
   /**
@@ -83,14 +72,19 @@ class Button {
       }
       // figura
       stroke(255);
+      strokeWeight(borde);
       rect(rectX, rectY, rectAncho, rectAlto);
       // texto
-      textSize(textSize);
+      textSize(rectTextSize);
       textAlign(CENTER, CENTER);
       fill(0, 408, 612, 816);
-      text(rectText, textX, textY);
+      text(rectText, rectTextX, rectTextY);
       break;
+
     case "circle":
+      // set ellipse location draw reference
+      ellipseMode(CENTER);
+
       if (circleOver) {
         fill(circleHighlight);
       } else {

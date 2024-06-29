@@ -19,33 +19,11 @@ class HeadsUpDisplay {
   HeadsUpDisplay() {
     // Constructor        
     // construye dialogo de Bienvenida
-    // TODO: intentar hacer función
-    dialogBienvenido.id = "dialog_bienvenido";
-    dialogBienvenido.tituloDialog = "Bievenida";
-    dialogBienvenido.textoDialog = "texto";
-    dialogBienvenido.dialogTextColor = color(0, 408, 612, 816);
-
-    dialogBienvenido.conBtnCerrar = false;
-    dialogBienvenido.conBtnUno = true;
-    dialogBienvenido.conBtnDos = true;
-
-    dialogBienvenido.conColorPrincipal = false;
-
-    dialogBienvenido.idBtnDos = "btn_instrucciones";
-    dialogBienvenido.textoBtnDos = "Instrucciones";
+    construyeDialogBienvenido(); // TODO: intentar hacer función    
     
     // construye dialogo de Instrucciones
-    // TODO: intentar hacer función
-    dialogInstrucciones.id = "dialog_instrucciones";
-    dialogInstrucciones.tituloDialog = "Instrucciones";
-    dialogInstrucciones.textoDialog = "";
-    dialogInstrucciones.dialogTextColor = color(0, 408, 612, 816);
-    dialogInstrucciones.conBtnCerrar = true;
-    dialogInstrucciones.conBtnUno = false;
-    dialogInstrucciones.conBtnDos = true;
-    dialogInstrucciones.conColorPrincipal = true;
-    dialogInstrucciones.idBtnDos = "btn_listo";
-    dialogInstrucciones.textoBtnDos = "Listo";
+    construyeDialogIntrucciones(); // TODO: intentar hacer función
+    
   }
 
   /**
@@ -73,7 +51,45 @@ class HeadsUpDisplay {
 
     camera.endHUD();
   }
+  
+  /**
+   * Método construyeDialogBienvenido
+   */
+  void construyeDialogBienvenido() {
+    dialogBienvenido.id = "dialog_bienvenido";
+    dialogBienvenido.tituloDialog = "Bievenida";
+    dialogBienvenido.textoDialog = "texto";
+    dialogBienvenido.dialogTextColor = color(0, 408, 612, 816);
 
+    dialogBienvenido.conBtnCerrar = false;
+
+    dialogBienvenido.conBtnUno = true;
+
+    dialogBienvenido.conBtnDos = true;
+    dialogBienvenido.conColorPrincipal = false;
+    dialogBienvenido.idBtnDos = "btn_instrucciones";
+    dialogBienvenido.textoBtnDos = "Instrucciones";
+  }
+
+  /**
+   * Método construyeDialogIntrucciones
+   */
+  void construyeDialogIntrucciones() {
+    dialogInstrucciones.id = "dialog_instrucciones";
+    dialogInstrucciones.tituloDialog = "Instrucciones";
+    dialogInstrucciones.textoDialog = "";
+    dialogInstrucciones.dialogTextColor = color(0, 408, 612, 816);
+
+    dialogInstrucciones.conBtnCerrar = true;
+
+    dialogInstrucciones.conBtnUno = false;
+    
+    dialogInstrucciones.conBtnDos = true;
+    dialogInstrucciones.conColorPrincipal = true;
+    dialogInstrucciones.idBtnDos = "btn_listo";
+    dialogInstrucciones.textoBtnDos = "Listo";
+  }
+  
   /**
    * Método update
    */

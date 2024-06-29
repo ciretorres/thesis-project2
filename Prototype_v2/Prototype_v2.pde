@@ -43,10 +43,9 @@ void setup() {
  * Método para dibujar mientras se ejecuta el entorno
  */
 void draw() {
-  // Color de fondo
-  background(backgroundColor);
-  // Luz del ambiente predeterminada
-  lights();
+  
+  background(backgroundColor); // Color de fondo  
+  lights();// Luz del ambiente predeterminada
 
   // PushPop the current transformation matrix onto the matrix stack.
   // https://processing.org/reference/pushMatrix_.html
