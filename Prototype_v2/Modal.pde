@@ -30,12 +30,12 @@ class Modal {
   int rectX = width/2 - (buttonAncho/2);
   int rectY = height/2 + (dialogAlto/2) - (buttonAlto);
 
-  
+
   // declara botón
   Button btnInstrucciones;
   Button btnCerrar = new Button();
   Button btnComenzar;
-  
+
   color colorButtonFondo;
   int tamanioFuente, bordeBoton;
 
@@ -43,7 +43,7 @@ class Modal {
     // Constructor
     if (fullScreen) redimensiona();
 
-    // propiedades botón cerrar  
+    // propiedades botón cerrar
     btnCerrar.id = "btn_cerrar";
     btnCerrar.forma = "circle";
     btnCerrar.circleSize = 88;
@@ -51,7 +51,6 @@ class Modal {
     btnCerrar.circleHighlight = color(204);
     btnCerrar.circleX = dialogPosicionX + dialogAncho - (btnCerrar.circleSize/2) - espaciado;
     btnCerrar.circleY = dialogPosicionY + (btnCerrar.circleSize/2) + espaciado;
-
   }
 
   /**

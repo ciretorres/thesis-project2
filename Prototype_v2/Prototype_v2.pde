@@ -43,21 +43,27 @@ void setup() {
  * Método para dibujar mientras se ejecuta el entorno
  */
 void draw() {
-  
-  background(backgroundColor); // Color de fondo  
-  lights();// Luz del ambiente predeterminada
+  // Color de fondo  
+  background(backgroundColor);
+  lights(); // Luz del ambiente predeterminada
 
-  // PushPop the current transformation matrix onto the matrix stack.
-  // https://processing.org/reference/pushMatrix_.html
-  // https://processing.org/reference/popMatrix_.html
+  /**
+   * Push-Pop the current transformation matrix onto the matrix stack.
+   * https://processing.org/reference/pushMatrix_.html
+   * https://processing.org/reference/popMatrix_.html
+   */ 
   pushMatrix();
-  //
+  // TODO: muestrar las estrellas
+  
+  // muestra la HeadsUpDisplay
   HUD.display();
 
 
   popMatrix();
 }
-
+/**
+ * Método para enterarse cuando se dió click
+ */
 void mouseClicked() {
   println("click");
   println(opcionDialogAbierto);

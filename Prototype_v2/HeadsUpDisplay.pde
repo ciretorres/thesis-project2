@@ -4,7 +4,7 @@
  * It controls the dialog between the backend and frontend.
  */
 int opcionDialogAbierto = 0;
-
+// variables globales de estilo
 int espaciado = 24;
 int borderRadius = 20;
 int tituloSize = 56;
