@@ -1,9 +1,9 @@
 /**
- * The Dialog show a rectangle that presents relevant
+ * The Modal show a rectangle that presents relevant
  * information about the system.
  */
 
-class Dialog {
+class Modal {
   boolean fullScreen = width > 1366;
   // propiedades Dialogo
   String id;
@@ -31,18 +31,15 @@ class Dialog {
   int rectY = height/2 + (dialogAlto/2) - (buttonAlto);
 
   
-  // inicializa botón
-  // Button btnInstrucciones  = new Button();
+  // declara botón
   Button btnInstrucciones;
   Button btnCerrar = new Button();
   Button btnComenzar;
-  // Button btnComenzar = new Button();
-
   
   color colorButtonFondo;
   int tamanioFuente, bordeBoton;
 
-  Dialog() {
+  Modal() {
     // Constructor
     if (fullScreen) redimensiona();
 
@@ -55,40 +52,6 @@ class Dialog {
     btnCerrar.circleX = dialogPosicionX + dialogAncho - (btnCerrar.circleSize/2) - espaciado;
     btnCerrar.circleY = dialogPosicionY + (btnCerrar.circleSize/2) + espaciado;
 
-    // propiedades botón comenzar
-    // btnComenzar.id = "btn_comenzar";
-    // btnComenzar.forma = "rect";
-    // btnComenzar.rectAncho = dialogAncho - (espaciado * 2);
-    // btnComenzar.rectAlto = 72;
-    // btnComenzar.rectX = width/2 - (buttonAncho/2);
-    // btnComenzar.rectY = height/2 + (dialogAlto/2) - (buttonAlto) - espaciado;
-    // btnComenzar.rectColor = color(0);
-    // btnComenzar.rectHighlight = color(51);
-    // btnComenzar.rectText = "Comenzar";
-    // btnComenzar.rectTextSize = 56;
-    // btnComenzar.rectTextX = width/2;
-    // btnComenzar.rectTextY = btnComenzar.rectY + (btnComenzar.rectAlto/2) - (btnComenzar.rectTextSize/5);
-
-    // if (conColorPrincipal) {
-    //   colorButtonFondo = color(0);
-    //   tamanioFuente = 56;
-    // } else {
-    //   colorButtonFondo = color(255, 255, 255, 0);
-    //   tamanioFuente = 24;
-    // }
-    // // propiedades botón comenzar
-    // btnInstrucciones.id = idBtnDos;
-    // btnInstrucciones.forma = "rect";
-    // btnInstrucciones.rectAncho = dialogAncho - (espaciado * 2);
-    // btnInstrucciones.rectAlto = 72;
-    // btnInstrucciones.rectX = width/2 - (buttonAncho/2);
-    // btnInstrucciones.rectY = height/2 + (dialogAlto/2) - (buttonAlto) - espaciado;
-    // btnInstrucciones.rectColor = colorButtonFondo;
-    // btnInstrucciones.rectHighlight = color(51);
-    // btnInstrucciones.rectText = textoBtnDos;
-    // btnInstrucciones.rectTextSize = tamanioFuente;
-    // btnInstrucciones.rectTextX = width/2;
-    // btnInstrucciones.rectTextY = btnInstrucciones.rectY + (btnInstrucciones.rectAlto/2) - (btnInstrucciones.rectTextSize/5);
   }
 
   /**
@@ -116,9 +79,6 @@ class Dialog {
       btnComenzar.render();
     }
     if (conBtnDos) {
-      // color colorButtonFondo;
-      // int tamanioFuente;
-
       if (conColorPrincipal) {
         colorButtonFondo = color(0);
         tamanioFuente = 56;

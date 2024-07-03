@@ -11,18 +11,20 @@ int tituloSize = 56;
 int textoSize = 24;
 
 class HeadsUpDisplay {
+  // controlador de Diálogo
+  ControladorDialogo controladorDialogo = new ControladorDialogo();
   // dialogo de Bienvenida
-  Dialog dialogBienvenido = new Dialog();  
+  Modal modalBienvenido = new Modal();
   // dialogo de Instrucciones
-  Dialog dialogInstrucciones = new Dialog();
+  Modal modalInstrucciones = new Modal();
 
   HeadsUpDisplay() {
-    // Constructor        
+    // Constructor
+
     // construye dialogo de Bienvenida
-    construyeDialogBienvenido(); // TODO: intentar hacer función    
-    
+    construyeModalBienvenido();
     // construye dialogo de Instrucciones
-    construyeDialogIntrucciones(); // TODO: intentar hacer función
+    construyeModalIntrucciones();
     
   }
 
@@ -36,13 +38,16 @@ class HeadsUpDisplay {
     // https://mrfeinberg.com/peasycam/reference/index.html
     camera.beginHUD();
     //
+    // TODO: mostrar controlador de dialogo
+    controladorDialogo.mostrar();
+
     // abrir dialog
     switch(opcionDialogAbierto) {
     case 0:
-      dialogBienvenido.show();
+      modalBienvenido.show();
       break;
     case 1:
-      dialogInstrucciones.show();
+      modalInstrucciones.show();
       break;
     default:
       // println("cerrados");
@@ -55,39 +60,41 @@ class HeadsUpDisplay {
   /**
    * Método construyeDialogBienvenido
    */
-  void construyeDialogBienvenido() {
-    dialogBienvenido.id = "dialog_bienvenido";
-    dialogBienvenido.tituloDialog = "Bievenida";
-    dialogBienvenido.textoDialog = "texto";
-    dialogBienvenido.dialogTextColor = color(0, 408, 612, 816);
-
-    dialogBienvenido.conBtnCerrar = false;
-
-    dialogBienvenido.conBtnUno = true;
-
-    dialogBienvenido.conBtnDos = true;
-    dialogBienvenido.conColorPrincipal = false;
-    dialogBienvenido.idBtnDos = "btn_instrucciones";
-    dialogBienvenido.textoBtnDos = "Instrucciones";
+  void construyeModalBienvenido() {
+    // propiedades
+    modalBienvenido.id = "dialog_bienvenido";
+    modalBienvenido.tituloDialog = "Bievenida";
+    modalBienvenido.textoDialog = "texto";
+    modalBienvenido.dialogTextColor = color(0, 408, 612, 816);
+    // btn cerrar
+    modalBienvenido.conBtnCerrar = false;
+    // btn uno
+    modalBienvenido.conBtnUno = true;
+    // btn dos
+    modalBienvenido.conBtnDos = true;
+    modalBienvenido.conColorPrincipal = false;
+    modalBienvenido.idBtnDos = "btn_instrucciones";
+    modalBienvenido.textoBtnDos = "Instrucciones";
   }
 
   /**
    * Método construyeDialogIntrucciones
    */
-  void construyeDialogIntrucciones() {
-    dialogInstrucciones.id = "dialog_instrucciones";
-    dialogInstrucciones.tituloDialog = "Instrucciones";
-    dialogInstrucciones.textoDialog = "";
-    dialogInstrucciones.dialogTextColor = color(0, 408, 612, 816);
-
-    dialogInstrucciones.conBtnCerrar = true;
-
-    dialogInstrucciones.conBtnUno = false;
-    
-    dialogInstrucciones.conBtnDos = true;
-    dialogInstrucciones.conColorPrincipal = true;
-    dialogInstrucciones.idBtnDos = "btn_listo";
-    dialogInstrucciones.textoBtnDos = "Listo";
+  void construyeModalIntrucciones() {
+    // propiedades
+    modalInstrucciones.id = "dialog_instrucciones";
+    modalInstrucciones.tituloDialog = "Instrucciones";
+    modalInstrucciones.textoDialog = "";
+    modalInstrucciones.dialogTextColor = color(0, 408, 612, 816);
+    // btn cerrar
+    modalInstrucciones.conBtnCerrar = true;
+    // btn uno
+    modalInstrucciones.conBtnUno = false;
+    // btn dos
+    modalInstrucciones.conBtnDos = true;
+    modalInstrucciones.conColorPrincipal = true;
+    modalInstrucciones.idBtnDos = "btn_listo";
+    modalInstrucciones.textoBtnDos = "Listo";
   }
   
   /**
