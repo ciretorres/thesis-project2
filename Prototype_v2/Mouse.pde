@@ -21,7 +21,7 @@ class Mouse {
         rectClick = false;
 
         switch(id) {
-        case "btn_cerrar":
+        case "idBtnCerrar":
           abrirDialogAbierto = 3;
           break;
         default: //
@@ -33,13 +33,13 @@ class Mouse {
         circleClick = false;
 
         switch(id) {
-        case "btn_instrucciones":
+        case "idBtnInstrucciones":
           abrirDialogAbierto = 1;
           break;
-        case "btn_listo":
+        case "idBtnListo":
           abrirDialogAbierto = 4;
           break;
-        case "btn_comenzar":
+        case "idBtnComenzar":
           abrirDialogAbierto = 2;
           break;
         default: //

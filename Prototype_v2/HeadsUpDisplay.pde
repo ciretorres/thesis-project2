@@ -62,39 +62,46 @@ class HeadsUpDisplay {
    */
   void construyeModalBienvenido() {
     // propiedades
-    modalBienvenido.id = "dialog_bienvenido";
-    modalBienvenido.tituloDialog = "Bievenida";
-    modalBienvenido.textoDialog = "texto";
-    modalBienvenido.dialogTextColor = color(0, 408, 612, 816);
-    // btn cerrar
-    modalBienvenido.conBtnCerrar = false;
-    // btn uno
-    modalBienvenido.conBtnUno = true;
-    // btn dos
-    modalBienvenido.conBtnDos = true;
-    modalBienvenido.conColorPrincipal = false;
-    modalBienvenido.idBtnDos = "btn_instrucciones";
-    modalBienvenido.textoBtnDos = "Instrucciones";
+    modalBienvenido.id = "dialogBienvenido";
+    modalBienvenido.tituloModal = "Bievenida";
+    modalBienvenido.textoModal = "texto";
+    // btn instrucciones
+    modalBienvenido.conBtnUnoInferior = true;    
+    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones";
+    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0);
+    modalBienvenido.colorFondoPrincipalBtnUnoInferior = false;
+    modalBienvenido.tamanioTextoBtnUnoInferior = 24;
+    modalBienvenido.textoBtnUnoInferior = "Instrucciones";
+    // btn comenzar
+    modalBienvenido.conBtnDosInferior = false;
+    modalBienvenido.idBtnDosInferior = "idBtnComenzar";
+    modalBienvenido.colorFondoBtnDosInferior = color(0);
+    modalBienvenido.colorFondoPrincipalBtnDosInferior = true;
+    modalBienvenido.tamanioTextoBtnDosInferior = 56;
+    modalBienvenido.textoBtnDosInferior = "Comenzar";
   }
-
   /**
    * Método construyeDialogIntrucciones
    */
   void construyeModalIntrucciones() {
     // propiedades
-    modalInstrucciones.id = "dialog_instrucciones";
-    modalInstrucciones.tituloDialog = "Instrucciones";
-    modalInstrucciones.textoDialog = "";
-    modalInstrucciones.dialogTextColor = color(0, 408, 612, 816);
+    modalInstrucciones.id = "dialogInstrucciones";
+    modalInstrucciones.tituloModal = "Instrucciones";
+    modalInstrucciones.textoModal = "";
     // btn cerrar
-    modalInstrucciones.conBtnCerrar = true;
-    // btn uno
-    modalInstrucciones.conBtnUno = false;
-    // btn dos
-    modalInstrucciones.conBtnDos = true;
-    modalInstrucciones.conColorPrincipal = true;
-    modalInstrucciones.idBtnDos = "btn_listo";
-    modalInstrucciones.textoBtnDos = "Listo";
+    modalInstrucciones.conBtnCerrar = false;
+    modalInstrucciones.idBtnCerrar = "idBtnCerrar";
+    modalInstrucciones.formaBtn = "circle";
+    modalInstrucciones.colorFondoBtnCerrar = color(255);
+    modalInstrucciones.tamanioBtnCerrar = 88;
+    modalInstrucciones.textoBtnCerrar = "C";
+    // btn instrucciones
+    modalInstrucciones.conBtnUnoInferior = true;    
+    modalInstrucciones.idBtnUnoInferior = "idBtnListo";
+    modalInstrucciones.colorFondoBtnUnoInferior = color(0);
+    modalBienvenido.colorFondoPrincipalBtnUnoInferior = true;
+    modalInstrucciones.tamanioTextoBtnUnoInferior = 56;
+    modalInstrucciones.textoBtnUnoInferior = "Listo";
   }
   
   /**

@@ -6,53 +6,60 @@ class Button {
   Over over = new Over();
   Mouse mouse = new Mouse();
 
-  String id;
-  String forma;
+  // propiedades iniciales del botón
+  String id = "idButton";
+  String forma = "rect";
 
-  int rectAncho;
-  int rectAlto;
+  color rectColor = color(0);
+  color rectHighlight = color(rectColor, 51);
+  boolean conColorFondoPrincipal = true;
+
+  color colorBorde = color(255);
+  int anchoBorde = 1;
+  boolean conBorde = true;
+
   int rectX;
   int rectY;
-  color rectColor;
-  color rectHighlight;
-  String rectText;
-  int rectTextSize;
-  int rectTextX;
-  int rectTextY;
+  int rectAlto = 72;
+  int rectAncho;
+
+  int rectTextSize = 56;
+  color colorTexto = color(0, 408, 612, 816);
+  String rectText = "Botón";
+  int rectTextX = width/2;
+  int rectTextY = rectY + (rectAlto/2) - (rectTextSize/5);
+
+  int posicionXButton;
+  int posicionYButton;
+  int altoButton;
+  int anchoButton;
+  int radioBordeButton = 0;
+
+  int tamanioTextoButton = 56;
+  int posicionTextoXButton;
+  int posicionTextoYButton;
+
   boolean rectOver = false;
+
+  //
 
   int circleSize;
   color circleColor;
-  color circleHighlight;
+  color circleHighlight = color(circleColor, 51);
   int circleX;
   int circleY;
   boolean circleOver = false;
-
-  int borde;
 
   Button() {
     // Constructor
   }
 
-  Button(String id, int rectAncho, int rectAlto, int rectX,
-    int rectY, color rectColor, String rectText, int rectTextSize, int borde) {
+  Button(int rectAncho, int rectX, int rectY) {
     // Constructor rectangle
-    this.id = id;
-    this.forma = "rect";
     this.rectAncho = rectAncho;
-    this.rectAlto = rectAlto;
     this.rectX = rectX;
     this.rectY = rectY - espaciado;
-
-    this.rectColor = rectColor;
-    this.rectHighlight = color(51);
-
-    this.rectTextX = width/2;
-    this.rectText = rectText;
-    this.rectTextSize = rectTextSize;
-    this.rectTextY = this.rectY + (this.rectAlto/2) - (this.rectTextSize/5);
-
-    this.borde = borde;
+    rectTextY = rectY;
   }
 
   /**
@@ -65,19 +72,26 @@ class Button {
     // Dibuja botones
     switch(forma) {
     case "rect":
+      // si hay over cambia de color el fondo
       if (rectOver) {
         fill(rectHighlight);
+        strokeWeight(anchoBorde);
       } else {
         fill(rectColor);
+        if(!conColorFondoPrincipal) {
+          strokeWeight(0);
+        } else {
+          strokeWeight(anchoBorde);
+        }
       }
-      // figura
-      stroke(255);
-      strokeWeight(borde);
+      // dibuja la figura
+      stroke(colorBorde);
+
       rect(rectX, rectY, rectAncho, rectAlto);
-      // texto
+      // dibuja el texto
       textSize(rectTextSize);
       textAlign(CENTER, CENTER);
-      fill(0, 408, 612, 816);
+      fill(colorTexto);
       text(rectText, rectTextX, rectTextY);
       break;
 

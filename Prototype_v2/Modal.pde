@@ -1,56 +1,75 @@
 /**
- * The Modal show a rectangle that presents relevant
- * information about the system.
+ * The Modal show a rectangle which presents relevant
+ * information or instructions about the system.
  */
 
 class Modal {
   boolean fullScreen = width > 1366;
   // propiedades Dialogo
-  String id;
-  String tituloDialog, textoDialog;
-  color dialogTextColor;
-
-  color dialogBackgroundColor = color(102, 102, 102, 191);
-  int dialogAncho = width - (width/2);
-  int dialogAlto = height - (height/3);
-  int dialogPosicionX = width/2 - (dialogAncho/2);
-  int dialogPosicionY = height/2 - (dialogAlto/2);
-
-  // propiedades botones
-  boolean conBtnCerrar, conBtnUno, conBtnDos, conColorPrincipal;
-
-  String idBtnDos;
-  String textoBtnUno;
-  String textoBtnDos;
-
-
-  // propiedades botón rectángulo
-  int buttonAncho = dialogAncho - (espaciado * 2);
-  int buttonAlto = 72;
-  int rectX = width/2 - (buttonAncho/2);
-  int rectY = height/2 + (dialogAlto/2) - (buttonAlto);
-
+  String id;  
+  // propiedades de texto
+  String tituloModal = "# Título";
+  String textoModal = "Texto";
+  // propiedades de color
+  color colorTextModal = color(0);
+  color backgroundColorModal = color(102, 102, 102, 191);
+  color strokeColorModal = color(102, 102, 102, 191);
+  // propiedades de tamaño y posición
+  int anchoModal = width - (width/2);
+  int altoModal = height - (height/3);
+  int positionXModal = width/2 - (anchoModal/2);
+  int positionYModal = height/2 - (altoModal/2);
 
   // declara botón
   Button btnInstrucciones;
   Button btnCerrar = new Button();
   Button btnComenzar;
 
-  color colorButtonFondo;
-  int tamanioFuente, bordeBoton;
+  // propiedades botones
+  String formaBtn = "rect";
+
+  boolean conBtnUnoInferior = false;
+  String idBtnUnoInferior;
+  boolean colorFondoPrincipalBtnUnoInferior;
+  color colorFondoBtnUnoInferior;
+  int altoBtnUnoInferior = 72;
+  int anchoBtnUnoInferior = anchoModal - (espaciado * 2);
+  int positionXBtnUnoInferior = width/2 - (anchoBtnUnoInferior/2);
+  int positionYBtnUnoInferior = height/2 + (altoModal/2) - (altoBtnUnoInferior);
+  int tamanioTextoBtnUnoInferior;
+  String textoBtnUnoInferior;
+
+  boolean conBtnDosInferior = false;
+  String idBtnDosInferior;
+  color colorFondoBtnDosInferior;
+  boolean colorFondoPrincipalBtnDosInferior;
+  int altoBtnDosInferior = 72;
+  int anchoBtnDosInferior = anchoModal - (espaciado * 2);
+  int positionXBtnDosInferior = width/2 - (anchoBtnDosInferior/2);
+  int positionYBtnDosInferior = height/2 + (altoModal/2) - (altoBtnDosInferior);
+  int tamanioTextoBtnDosInferior;
+  String textoBtnDosInferior;
+
+  boolean conBtnCerrar = false;
+  String idBtnCerrar;
+  color colorFondoBtnCerrar;
+  int tamanioBtnCerrar;
+  String textoBtnCerrar;
+
+  // propiedades botón rectángulo
+  int rectX = width/2 - (anchoBtnUnoInferior/2);
+  int rectY = height/2 + (altoModal/2) - (altoBtnUnoInferior);
+
 
   Modal() {
     // Constructor
     if (fullScreen) redimensiona();
 
-    // propiedades botón cerrar
-    btnCerrar.id = "btn_cerrar";
-    btnCerrar.forma = "circle";
-    btnCerrar.circleSize = 88;
-    btnCerrar.circleColor = color(255);
-    btnCerrar.circleHighlight = color(204);
-    btnCerrar.circleX = dialogPosicionX + dialogAncho - (btnCerrar.circleSize/2) - espaciado;
-    btnCerrar.circleY = dialogPosicionY + (btnCerrar.circleSize/2) + espaciado;
+    // this.alto = altoModal;
+    // this.ancho = anchoModal;
+    // this.posicionX = positionXModal;
+    // this.posicionY = positionYModal;
+    // this.colorFondo = backgroundColorModal;
   }
 
   /**
@@ -58,56 +77,67 @@ class Modal {
    */
   void show() {
     // Dibuja rect dialogo
-    fill(dialogBackgroundColor);
-    rect(dialogPosicionX, dialogPosicionY, dialogAncho, dialogAlto, borderRadius);
+    fill(backgroundColorModal);
+    noStroke();
+    rect(positionXModal, positionYModal, anchoModal, altoModal, borderRadius);
 
     // Botones
     // TODO: revisar si se puede unir con lo de abajo o hacerlo función
-    if (conBtnCerrar) btnCerrar.render();
+    if (conBtnCerrar) {
+      // propiedades botón cerrar
+      btnCerrar.id = idBtnCerrar;
+      btnCerrar.forma = formaBtn;
+      btnCerrar.circleColor = colorFondoBtnCerrar;
+      btnCerrar.circleSize = tamanioBtnCerrar;
+      btnCerrar.circleX = positionXModal + anchoModal - (btnCerrar.circleSize/2) - espaciado;
+      btnCerrar.circleY = positionYModal + (btnCerrar.circleSize/2) + espaciado;
+      btnCerrar.rectText = textoBtnCerrar;
+      btnCerrar.render();
+    }
 
-    if (conBtnUno) {
+    if (conBtnDosInferior) {
+      // contruye
       btnComenzar = new Button(
-        "btn_comenzar",
-        buttonAncho,
-        buttonAlto,
-        rectX,
-        rectY - buttonAlto-espaciado,
-        color(0),
-        "Comenzar", 56, 1
+        anchoBtnDosInferior,
+        positionXBtnDosInferior,
+        positionYBtnDosInferior - altoBtnDosInferior - espaciado
         );
+      // inicializa
+      btnComenzar.id = idBtnDosInferior;
+      btnComenzar.rectColor = colorFondoBtnDosInferior;
+      btnComenzar.conColorFondoPrincipal = colorFondoPrincipalBtnDosInferior;
+      btnComenzar.rectTextSize = tamanioTextoBtnDosInferior;
+      btnComenzar.rectText = textoBtnDosInferior;
+      // render
       btnComenzar.render();
     }
-    if (conBtnDos) {
-      if (conColorPrincipal) {
-        colorButtonFondo = color(0);
-        tamanioFuente = 56;
-        bordeBoton = 1;
-      } else {
-        colorButtonFondo = color(255, 255, 255, 0);
-        tamanioFuente = 24;
-        bordeBoton = 0;
-      }
 
+    if (conBtnUnoInferior) {
+      // contruye
       btnInstrucciones = new Button(
-        idBtnDos,
-        buttonAncho,
-        buttonAlto,
-        rectX,
-        rectY,
-        colorButtonFondo,
-        textoBtnDos, tamanioFuente, bordeBoton
+        anchoBtnUnoInferior,
+        positionXBtnUnoInferior,
+        positionYBtnUnoInferior
         );
+      // inicializa
+      btnInstrucciones.id = idBtnUnoInferior;
+      btnInstrucciones.rectText = textoBtnUnoInferior;
+      btnInstrucciones.rectTextSize = tamanioTextoBtnUnoInferior;
+      btnInstrucciones.rectColor = colorFondoBtnUnoInferior;
+      btnInstrucciones.conColorFondoPrincipal = colorFondoPrincipalBtnUnoInferior;
+      btnInstrucciones.rectTextY = btnInstrucciones.rectY + (btnInstrucciones.rectAlto/2) - (btnInstrucciones.rectTextSize/5);
+      // render
       btnInstrucciones.render();
     }
 
     // titulo dialog
     textSize(tituloSize);
     textAlign(LEFT, TOP);
-    fill(dialogTextColor);
-    text(tituloDialog, dialogPosicionX + espaciado, dialogPosicionY);
+    fill(colorTextModal);
+    text(tituloModal, positionXModal + espaciado, positionYModal);
     // texto dialog
     textSize(textoSize);
-    text(textoDialog, dialogPosicionX + espaciado, dialogPosicionY + tituloSize + espaciado);
+    text(textoModal, positionXModal + espaciado, positionYModal + tituloSize + espaciado);
   }
 
   /**
@@ -116,18 +146,18 @@ class Modal {
   void redimensiona() {
     println("la pantalla es más ancha que 1366px");
     // dialog
-    dialogAncho = 683;
-    dialogAlto = 512;
-    dialogPosicionX = width/2 - (dialogAncho/2);
-    dialogPosicionY = height/2 - (dialogAlto/2);
+    anchoModal = 683;
+    altoModal = 512;
+    positionXModal = width/2 - (anchoModal/2);
+    positionYModal = height/2 - (altoModal/2);
     // boton rect
-    buttonAncho = dialogAncho - (espaciado * 2);
-    rectX = width/2 - (buttonAncho/2);
-    rectY = height/2 + (dialogAlto/2) - (buttonAlto);
+    anchoBtnUnoInferior = anchoModal - (espaciado * 2);
+    rectX = width/2 - (anchoBtnUnoInferior/2);
+    rectY = height/2 + (altoModal/2) - (altoBtnUnoInferior);
     // boton circle
-    // circleX = dialogPosicionX + dialogAncho - (circleSize/2) - espaciado;
-    // circleY = dialogPosicionY + (circleSize/2) + espaciado;
-    btnCerrar.circleX = dialogPosicionX + dialogAncho - (btnCerrar.circleSize/2) - espaciado;
-    btnCerrar.circleY = dialogPosicionY + (btnCerrar.circleSize/2) + espaciado;
+    // circleX = positionXModal + anchoModal - (circleSize/2) - espaciado;
+    // circleY = positionYModal + (circleSize/2) + espaciado;
+    btnCerrar.circleX = positionXModal + anchoModal - (btnCerrar.circleSize/2) - espaciado;
+    btnCerrar.circleY = positionYModal + (btnCerrar.circleSize/2) + espaciado;
   }
 }
