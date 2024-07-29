@@ -1,47 +1,46 @@
 /**
- * The HeadsUpDisplay is about the part of the software 
- * which interacts directly with the users interface. 
- * It controls the dialog between the backend and frontend.
- */
-int opcionDialogAbierto = 0;
-// variables globales de estilo
-int espaciado = 24;
-int borderRadius = 20;
-int tituloSize = 56;
-int textoSize = 24;
+ * @class HeadsUpDisplay Se trata de la parte del software que interactúa
+ * directamente con la interfaz de usuaria. Controla el diálogo entre
+ * el backend y el frontend del proyecto.
+ *
+ * @property {Object} controladorDialogo Indica el controlador de diálogo
+ * @property {Object} modalBienvenido Indica el modal de bienvenida
+ * @property {Object} modalInstrucciones Indica el modal de intrucciones
 
+ * @property {function} display Renderea todo lo que se va a dibujar
+ *
+ * @property {function} contruyeModalBienvenido Contruye el modal con las 
+ * propiedades de bienvenida
+ * @property {function} construyeModalInstrucciones Contruye el modal con
+ * las instrucciones
+ */
 class HeadsUpDisplay {
-  // controlador de Diálogo
   ControladorDialogo controladorDialogo = new ControladorDialogo();
-  // dialogo de Bienvenida
+
   Modal modalBienvenido = new Modal();
-  // dialogo de Instrucciones
   Modal modalInstrucciones = new Modal();
 
   HeadsUpDisplay() {
     // Constructor
 
-    // construye dialogo de Bienvenida
     construyeModalBienvenido();
-    // construye dialogo de Instrucciones
-    construyeModalIntrucciones();
-    
+    construyeModalIntrucciones();    
   }
 
-  /**
-   * Método donde se renderea todo lo que se va a dibujar.
-   */
+  /** @function display Método donde se renderea todo lo que se va a dibujar. */
   void display() {
     update();
-    // Utility methods to permit the use of a Heads-Up Display
-    // Begin and end screen-aligned 2D-drawing.
-    // https://mrfeinberg.com/peasycam/reference/index.html
+    /**
+     * Utility methods to permit the use of a Heads-Up Display
+     * Begin and end screen-aligned 2D-drawing.
+     * @see https://mrfeinberg.com/peasycam/reference/index.html
+     */  
     camera.beginHUD();
     //
     // TODO: mostrar controlador de dialogo
     controladorDialogo.mostrar();
 
-    // abrir dialog
+    // abrir modal
     switch(opcionDialogAbierto) {
     case 0:
       modalBienvenido.show();
@@ -57,21 +56,24 @@ class HeadsUpDisplay {
     camera.endHUD();
   }
   
-  /**
-   * Método construyeDialogBienvenido
+  /** 
+   * @function construyeModalBienvenido Método para construir las propiedades 
+   * del modal de bienvenida 
    */
   void construyeModalBienvenido() {
     // propiedades
     modalBienvenido.id = "dialogBienvenido";
     modalBienvenido.tituloModal = "Bievenida";
     modalBienvenido.textoModal = "texto";
+
     // btn instrucciones
-    modalBienvenido.conBtnUnoInferior = true;    
-    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones";
-    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0);
+    modalBienvenido.conBtnUnoInferior = true; // TODO: modalBienvenida.conBtnInferiorUno
+
+    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones"; // TODO: modalBienvenida.idBtn
+    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0); // .colorFondoBtn
     modalBienvenido.colorFondoPrincipalBtnUnoInferior = false;
-    modalBienvenido.tamanioTextoBtnUnoInferior = 24;
-    modalBienvenido.textoBtnUnoInferior = "Instrucciones";
+    modalBienvenido.tamanioTextoBtnUnoInferior = 24; // .tamanioTextoBtn
+    modalBienvenido.textoBtnUnoInferior = "Instrucciones"; // .textoBtn
     // btn comenzar
     modalBienvenido.conBtnDosInferior = false;
     modalBienvenido.idBtnDosInferior = "idBtnComenzar";
@@ -80,14 +82,16 @@ class HeadsUpDisplay {
     modalBienvenido.tamanioTextoBtnDosInferior = 56;
     modalBienvenido.textoBtnDosInferior = "Comenzar";
   }
-  /**
-   * Método construyeDialogIntrucciones
+  /** 
+   * @function construyeModalInstrucciones Método para construir las propiedades 
+   * del modal con las instrucciones
    */
   void construyeModalIntrucciones() {
     // propiedades
     modalInstrucciones.id = "dialogInstrucciones";
     modalInstrucciones.tituloModal = "Instrucciones";
     modalInstrucciones.textoModal = "";
+
     // btn cerrar
     modalInstrucciones.conBtnCerrar = false;
     modalInstrucciones.idBtnCerrar = "idBtnCerrar";
@@ -104,9 +108,7 @@ class HeadsUpDisplay {
     modalInstrucciones.textoBtnUnoInferior = "Listo";
   }
   
-  /**
-   * Método update
-   */
+  /** @function update Método para actualizar */
   void update() {
 
   }

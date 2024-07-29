@@ -1,24 +1,33 @@
 /**
- * The Modal show a rectangle which presents relevant
- * information or instructions about the system.
+ * @class Modal Construye un modal de diálogo mediante un rectángulo blanco
+ * que presentará información relevante o instrucciones del sistema.
+ *
+ * @property {String} id Indica el identificador del modal
+ * @property {int} anchoModal Indica el ancho del modal
+ * @property {int} altoModal Indica el alto del modal 
+ * @property {int} positionXModal Indica la posición horizontal del modal
+ * @property {int} positionYModal Indica la posición vertical del modal
+ * @property {color} backgroundColorModal Indica el color del fondo del modal
+ * @property {color} strokeColorModal Indica el color del borde del modal
+ * @property {color} colorTextModal Indica el color del texto del modal
+ * @property {String} tituloModal Indica el título del modal
+ * @property {String} textoModal Indica el texto en el cuerpo del modal
  */
-
 class Modal {
+  // si el ancho de la pantalla es mayor
   boolean fullScreen = width > 1366;
   // propiedades Dialogo
   String id;  
-  // propiedades de texto
-  String tituloModal = "# Título";
-  String textoModal = "Texto";
-  // propiedades de color
-  color colorTextModal = color(0);
-  color backgroundColorModal = color(102, 102, 102, 191);
-  color strokeColorModal = color(102, 102, 102, 191);
-  // propiedades de tamaño y posición
   int anchoModal = width - (width/2);
   int altoModal = height - (height/3);
   int positionXModal = width/2 - (anchoModal/2);
   int positionYModal = height/2 - (altoModal/2);
+  color backgroundColorModal = color(102, 102, 102, 191);
+  color colorTextModal = color(0);
+  color strokeColorModal = color(102, 102, 102, 191);
+  String tituloModal = "# Título";
+  String titulo = "# Título";
+  String textoModal = "Texto";
 
   // declara botón
   Button btnInstrucciones;
@@ -70,6 +79,7 @@ class Modal {
     // this.posicionX = positionXModal;
     // this.posicionY = positionYModal;
     // this.colorFondo = backgroundColorModal;
+    titulo = tituloModal;
   }
 
   /**
@@ -134,7 +144,7 @@ class Modal {
     textSize(tituloSize);
     textAlign(LEFT, TOP);
     fill(colorTextModal);
-    text(tituloModal, positionXModal + espaciado, positionYModal);
+    text(titulo, positionXModal + espaciado, positionYModal);
     // texto dialog
     textSize(textoSize);
     text(textoModal, positionXModal + espaciado, positionYModal + tituloSize + espaciado);

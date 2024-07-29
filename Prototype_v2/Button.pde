@@ -1,5 +1,6 @@
 /**
- * Button allows to draw an interactable rect or circle.
+ * @class Button permite dibujar botones en forma de círculo y rectángulo como referencia.
+ * @property {String} id (default: "idButton") Indica el identificador del botón
  */
 
 class Button {
