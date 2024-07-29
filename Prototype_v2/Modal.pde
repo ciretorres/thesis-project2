@@ -4,7 +4,7 @@
  *
  * @property {String} id Indica el identificador del modal
  * @property {int} ancho Indica el ancho del modal
- * @property {int} alto Indica el alto del modal 
+ * @property {int} alto Indica el alto del modal
  * @property {int} x Indica la posición horizontal del modal
  * @property {int} y Indica la posición vertical del modal
  * @property {color} fondoColor Indica el color del fondo del modal
@@ -12,12 +12,16 @@
  * @property {color} textoColor Indica el color del texto del modal
  * @property {String} titulo Indica el título del modal
  * @property {String} texto Indica el texto en el cuerpo del modal
+ *
+ * @property {Object} btnInstrucciones Indica el botón para ir las instrucciones
+ * @property {Object} btnComenzar Indica el botón para cerrar el dialogo y comenzar
+ * @property {Object} btnCerrar Indica el botón para cerrar el dialogo
  */
 class Modal {
   // si el ancho de la pantalla es mayor
   boolean fullScreen = width > 1366;
   // Propiedades Diálogo
-  String id;  
+  String id;
   // Dimensiones
   int ancho = width - (width/2);
   int alto = height - (height/3);
@@ -33,44 +37,37 @@ class Modal {
   String texto = "Texto";
 
   // declara object Botón en caso de necesitar
-  Button btnInstrucciones;
+  Button btnInstrucciones = new Button();
   Button btnCerrar = new Button();
-  Button btnComenzar;
+  Button btnComenzar = new Button();
 
-  // propiedades botones  
-  
-  String formaBtn = "rect";
-
+  // propiedades botones
+  String btnForma = "rect";
+  // btn 1
   boolean conBtnInferiorUno = false;
   String btnInferiorUnoId;
-  int btnInferiorUnoAlto = 72;
   int btnInferiorUnoAncho = ancho - (espaciado * 2);
+  int btnInferiorUnoAlto = 72;
   int btnInferiorUnoPositionX = width/2 - (btnInferiorUnoAncho/2);
-  int btnInferiorUnoPositionY = height/2 + (alto/2) - (btnInferiorUnoAlto);
+  int btnInferiorUnoPositionY = height/2 + (alto/2) - (btnInferiorUnoAlto) - espaciado;
   color btnInferiorUnoColorFondo;
+  String btnInferiorUnoTexto;
   int btnInferiorUnoTextoTamanio;
-  String btnUnoInferiorTexto;
-  
   // btn 2
   boolean conBtnInferiorDos = false;
-  String btnInferiorDosId;  
-  int altoBtnDosInferior = 72;
-  int anchoBtnDosInferior = ancho - (espaciado * 2);
-  int positionXBtnDosInferior = width/2 - (anchoBtnDosInferior/2);
-  int positionYBtnDosInferior = height/2 + (alto/2) - (altoBtnDosInferior);
+  String btnInferiorDosId;
+  int btnInferiorDosAncho = ancho - (espaciado * 2);
+  int btnInferiorDosAlto = 72;
+  int btnInferiorDosPositionX = width/2 - (btnInferiorDosAncho/2);
+  int btnInferiorDosPositionY = height/2 + (alto/2) - (btnInferiorDosAlto) - (btnInferiorUnoAlto) - (espaciado * 2);
   color btnInferiorDosColorFondo;
+  String btnInferiorDosTexto;
   int btnInferiorDosTextoTamanio;
-  String btnDosInferiorTexto;
   // btn cerrar
   boolean conBtnCerrar = false;
-  String idBtnCerrar;
-  color colorFondoBtnCerrar;
-  int tamanioBtnCerrar;
-  String textoBtnCerrar;
-
-  // propiedades botón rectángulo
-  int rectX = width/2 - (btnInferiorUnoAncho/2);
-  int rectY = height/2 + (alto/2) - (btnInferiorUnoAlto);
+  String btnCerrarId;
+  color btnCerrarFondoColor;
+  int btnCerrarTamanio;
 
 
   Modal() {
@@ -78,87 +75,82 @@ class Modal {
     // if (fullScreen) redimensiona();
   }
 
-  /**
-   * Método donde se renderea todo lo que se va a dibujar
-   */
-  void show() {    
-    String idModal = id;
-    int anchoModal = ancho;
-    int altoModal = alto;
-    int positionXModal = x;
-    int positionYModal = y;
-    color strokeColorModal = bordeColor;
-    color backgroundColorModal = fondoColor;
-    color colorTextModal = textoColor;
+  String idModal = id;
+  int anchoModal = ancho;
+  int altoModal = alto;
+  int positionXModal = x;
+  int positionYModal = y;
+  color strokeColorModal = bordeColor;
+  color backgroundColorModal = fondoColor;
+  color colorTextModal = textoColor;
+
+  /** @function show Método donde se renderea todo lo que se va a dibujar */
+  void show() {
     String tituloModal = titulo;
     String textoModal = texto;
 
-
-    // Dibuja rect dialogo
+    // Dibuja rectángulo modal
     fill(backgroundColorModal);
     noStroke();
     rect(positionXModal, positionYModal, anchoModal, altoModal, borderRadius);
 
-    // Botones
-    // TODO: revisar si se puede unir con lo de abajo o hacerlo función
+    // Dibuja botones
     if (conBtnCerrar) {
-      // propiedades botón cerrar
-      btnCerrar.id = idBtnCerrar;
-      btnCerrar.forma = formaBtn;
-      btnCerrar.circleColor = colorFondoBtnCerrar;
-      btnCerrar.circleSize = tamanioBtnCerrar;
-      btnCerrar.circleX = positionXModal + anchoModal - (btnCerrar.circleSize/2) - espaciado;
-      btnCerrar.circleY = positionYModal + (btnCerrar.circleSize/2) + espaciado;
+      inicializaBtnCerrar();
       btnCerrar.render();
     }
-
     if (conBtnInferiorDos) {
-      // contruye
-      btnComenzar = new Button(
-        anchoBtnDosInferior,
-        positionXBtnDosInferior,
-        positionYBtnDosInferior - altoBtnDosInferior - espaciado
-        );
-      // inicializa
-      btnComenzar.id = btnInferiorDosId;
-      btnComenzar.fondoColor = btnInferiorDosColorFondo;
-      btnComenzar.texto = btnDosInferiorTexto;
-      btnComenzar.textoTamanio = btnInferiorDosTextoTamanio;
-      // render
+      inicializaBtnComenzar();
       btnComenzar.render();
     }
-
     if (conBtnInferiorUno) {
-      // contruye
-      btnInstrucciones = new Button(
-        btnInferiorUnoAncho,
-        btnInferiorUnoPositionX,
-        btnInferiorUnoPositionY
-        );
-      // inicializa
-      btnInstrucciones.id = btnInferiorUnoId;      
-      btnInstrucciones.fondoColor = btnInferiorUnoColorFondo;      
-      btnInstrucciones.texto = btnUnoInferiorTexto;
-      btnInstrucciones.textoTamanio = btnInferiorUnoTextoTamanio;
-
-      
-      btnInstrucciones.textoY = btnInstrucciones.rectY + (btnInstrucciones.rectAlto/2) - (btnInstrucciones.textoTamanio/5);
-      // render
+      inicializaBtnInstrucciones();
       btnInstrucciones.render();
     }
 
-    // titulo dialog
-    textSize(tituloSize);
+    // dibuja titulo modal
+    textSize(tituloTamanio);
     textAlign(LEFT, TOP);
     fill(colorTextModal);
     text(tituloModal, positionXModal + espaciado, positionYModal);
-    // texto dialog
-    textSize(textoSize);
-    text(textoModal, positionXModal + espaciado, positionYModal + tituloSize + espaciado);
+    // dibuja texto modal
+    textSize(textoTamanio);
+    text(textoModal, positionXModal + espaciado, positionYModal + tituloTamanio + espaciado);
+  }
+
+  /** @function inicializaBtnCerrar Inicializa el botón de cerrar */
+  void inicializaBtnCerrar() {
+    btnCerrar.id = btnCerrarId;
+    btnCerrar.forma = btnForma;
+    btnCerrar.btnCirculoTamanio = btnCerrarTamanio;
+    btnCerrar.btnCirculoX = positionXModal + anchoModal - (btnCerrar.btnCirculoTamanio/2) - espaciado;
+    btnCerrar.btnCirculoY = positionYModal + (btnCerrar.btnCirculoTamanio/2) + espaciado;
+    btnCerrar.btnCirculoFondoColor = btnCerrarFondoColor;
+  }
+  /** @function inicializaBtnComenzar Inicializa el botón de comenzar */
+  void inicializaBtnComenzar() {
+    btnComenzar.id = btnInferiorDosId;
+    btnComenzar.ancho = btnInferiorDosAncho;
+    btnComenzar.x = btnInferiorDosPositionX;
+    btnComenzar.y = btnInferiorDosPositionY;
+    btnComenzar.fondoColor = btnInferiorDosColorFondo;
+    btnComenzar.texto = btnInferiorDosTexto;
+    btnComenzar.textoTamanio = btnInferiorDosTextoTamanio;
+  }
+  /** @function inicializaBtnInstrucciones Inicializa el botón de instrucciones */
+  void inicializaBtnInstrucciones() {
+    btnInstrucciones.id = btnInferiorUnoId;
+    btnInstrucciones.ancho = btnInferiorUnoAncho;
+    btnInstrucciones.x = btnInferiorUnoPositionX;
+    btnInstrucciones.y = btnInferiorUnoPositionY;
+    btnInstrucciones.fondoColor = btnInferiorUnoColorFondo;
+    btnInstrucciones.texto = btnInferiorUnoTexto;
+    btnInstrucciones.textoTamanio = btnInferiorUnoTextoTamanio;
   }
 
   /**
-   * Método para redimensionar y reposicionar todo, si el ancho de la pantalla está fullscreen
+   * TODO: arreglar esta función
+   * @funtion redimenciona Método para redimensionar y reposicionar todo, si el ancho de la pantalla está fullscreen
    */
   void redimensiona() {
     println("la pantalla es más ancha que 1366px");

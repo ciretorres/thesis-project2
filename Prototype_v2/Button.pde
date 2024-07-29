@@ -1,73 +1,74 @@
 /**
  * @class Button permite dibujar botones en forma de círculo y rectángulo como referencia.
- * @property {String} id (default: "idButton") Indica el identificador del botón
+ *
+ * @property {String} id (default: "btnId") Indica el identificador del botón
+ * @property {String} forma (default: "rect") Indica la forma del botón
+ * @property {int} ancho Indica el ancho del botón
+ * @property {int} alto (default: 72) Indica el alto del botón
+ * @property {int} x Indica la posición horizontal del botón
+ * @property {int} y Indica la posición vertical del botón
+ * @property {color} fondoColor (default: color(0)) Indica el color de fondo del botón
+ * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) Indica el color de fondo resaltado del botón
+ * @property {color} bordeColor (default: color(255)) Indica el color del borde del botón
+ * @property {int} bordeAncho (default: 1) Indica el ancho del borde del botón
+ * @property {boolean} btnConBorde (default: true) Indica si tiene borde el botón
+ * @property {String} texto (default: "Botón") Indica el texto del botón
+ * @property {int} textoTamanio (default: 56) Indica el tamaño del texto del botón
+ * @property {color} colorTexto (default: color(0, 408, 612, 816)) Indica el color del texto del botón
+ * @property {int} textoTamanio (default: 56) Indica la posición del texto horizontal botón
+ * @property {boolean} rectOver (default: false) Indica si está enfocado el botón rect
+ *
+ * @property {int} btnCirculoTamanio Indica el tamaño del botón círculo
+ * @property {int} btnCirculoX Indica la posición horizontal del botón círculo
+ * @property {color} btnCirculoFondoColor Indica el color de fondo del botón círculo
+ * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) Indica el color de fondo resaltado del botón
+ * @property {boolean} CircleOver (default: false) Indica si está enfocado el botón circle
+ *
+ * @property {Object} over Indica el objeto con las funciones para observar el enfoque de la usuaria
+ * @property {Object} mouse Indica el objeto con las funciones para var el click de la usuaria
+ *
+ * @property {function} render Renderea todo lo que se va a dibujar
+ * @property {function} update Observa si se enfoca un botón y si lo presiona
  */
 
 class Button {
-  Over over = new Over();
-  Mouse mouse = new Mouse();
-
   // propiedades iniciales del botón
   String forma = "rect";
   String id = "btnId";
-  
-  int rectX;
-  int rectY;
-  int rectAlto = 72;
-  int rectAncho;
-  
+  int ancho;
+  int alto = 72;  
+  int x;
+  int y;  
   color fondoColor = color(0);
   color fondoColorResaltado = color(fondoColor, 71);
   color bordeColor = color(255);  
   int bordeAncho = 1;
   boolean conBorde = true;
-  boolean btnConBorde = conBorde;
-
   String texto = "Botón";
   int textoTamanio = 56;
   color colorTexto = color(0, 408, 612, 816);
   int textoX = width/2;
-  int textoY = rectY + (rectAlto/2) - (textoTamanio/5);
-
-  int posicionXButton;
-  int posicionYButton;
-  int altoButton;
-  int anchoButton;
-  int radioBordeButton = 0;
-
-  int tamanioTextoButton = 56;
-  int posicionTextoXButton;
-  int posicionTextoYButton;
-
   boolean rectOver = false;
 
-  //
-
-  int circleSize;
-  color circleColor;
-  color circleHighlight = color(circleColor, 51);
-  int circleX;
-  int circleY;
+  // btnCirculo
+  int btnCirculoTamanio;
+  int btnCirculoX;
+  int btnCirculoY;
+  color btnCirculoFondoColor;
+  color btnCirculoFondoColorResaltado = color(btnCirculoFondoColor, 51);
   boolean circleOver = false;
   
+  Over over = new Over();
+  Mouse mouse = new Mouse();
+
   Button() {
     // Constructor
   }
 
-  Button(int rectAncho, int rectX, int rectY) {
-    // Constructor rectangle
-    this.rectAncho = rectAncho;
-    this.rectX = rectX;
-    this.rectY = rectY - espaciado;
-    textoY = rectY;
-  }
-
-  /**
-   * Método donde se renderea todo lo que se va a dibujar
-   */
+  /** @function render Método donde se renderea todo lo que se va a dibujar */
   void render() {
     // actualiza posición del cursor
-    update(mouseX, mouseY);
+    update();
     
     String btnId = id;
     String btnForma = forma;    
@@ -78,7 +79,7 @@ class Button {
     String btnRectText = texto;
     int btnRectTextoTamanio = textoTamanio;
     int btnRectTextoX = textoX;
-    int btnRectTextY = textoY;  
+    int btnRectTextY = y + (alto/2) - (btnRectTextoTamanio/5);
 
     // Dibuja botones
     switch(btnForma) {
@@ -101,7 +102,7 @@ class Button {
       }
       // dibuja la figura
       stroke(btnBordeColor);
-      rect(rectX, rectY, rectAncho, rectAlto);
+      rect(x, y, ancho, alto);
       // dibuja el texto
       textSize(btnRectTextoTamanio);
       textAlign(CENTER, CENTER);
@@ -114,26 +115,26 @@ class Button {
       ellipseMode(CENTER);
 
       if (circleOver) {
-        fill(circleHighlight);
+        fill(btnCirculoFondoColorResaltado);
       } else {
-        fill(circleColor);
+        fill(btnCirculoFondoColor);
       }
-      // figura
+      // dibuja la figura
       stroke(0);
-      ellipse(circleX, circleY, circleSize, circleSize);
+      ellipse(btnCirculoX, btnCirculoY, btnCirculoTamanio, btnCirculoTamanio);
       break;
     }
   }
 
-  /**
-   * Método update
+  /** 
+   * @function update Método para observar si se enfoca un botón y si lo presiona 
    */
-  void update(int x, int y) {
+  void update() {
     // opera si se hace hover en el circulo o el rec y avisa
-    if ( over.circle(circleX, circleY, circleSize) ) {
+    if ( over.circle(btnCirculoX, btnCirculoY, btnCirculoTamanio) ) {
       circleOver = true;
       rectOver = false;
-    } else if ( over.rect(rectX, rectY, rectAncho, rectAlto) ) {
+    } else if ( over.rect(x, y, ancho, alto) ) {
       rectOver = true;
       circleOver = false;
     } else {

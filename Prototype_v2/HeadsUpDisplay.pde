@@ -52,7 +52,6 @@ class HeadsUpDisplay {
       // println("cerrados");
     }
 
-
     camera.endHUD();
   }
   
@@ -69,13 +68,13 @@ class HeadsUpDisplay {
     modalBienvenida.conBtnInferiorUno = true; // TODO: modalBienvenida.conBtnInferiorUno
     modalBienvenida.btnInferiorUnoId = "idBtnInstrucciones";     
     modalBienvenida.btnInferiorUnoColorFondo = color(255, 255, 255, 0);
-    modalBienvenida.btnUnoInferiorTexto = "Instrucciones"; 
+    modalBienvenida.btnInferiorUnoTexto = "Instrucciones"; 
     modalBienvenida.btnInferiorUnoTextoTamanio = 24;
     // btn comenzar
     modalBienvenida.conBtnInferiorDos = true;
     modalBienvenida.btnInferiorDosId = "idBtnComenzar";
     modalBienvenida.btnInferiorDosColorFondo = color(0);    
-    modalBienvenida.btnDosInferiorTexto = "Comenzar";
+    modalBienvenida.btnInferiorDosTexto = "Comenzar";
     modalBienvenida.btnInferiorDosTextoTamanio = 56;
   }
   /** 
@@ -91,15 +90,15 @@ class HeadsUpDisplay {
     modalInstrucciones.conBtnInferiorUno = true;    
     modalInstrucciones.btnInferiorUnoId = "idBtnListo";
     modalInstrucciones.btnInferiorUnoColorFondo = color(255, 255, 255, 0);
-    modalInstrucciones.btnUnoInferiorTexto = "Listo";
+    modalInstrucciones.btnInferiorUnoTexto = "Listo";
     modalInstrucciones.btnInferiorUnoTextoTamanio = 56;
-
     // btn cerrar
-    modalInstrucciones.conBtnCerrar = false;
-    modalInstrucciones.idBtnCerrar = "idBtnCerrar";
-    modalInstrucciones.formaBtn = "circle";
-    modalInstrucciones.colorFondoBtnCerrar = color(255);
-    modalInstrucciones.tamanioBtnCerrar = 88;
+    modalInstrucciones.conBtnCerrar = true;
+    modalInstrucciones.btnCerrarId = "idBtnCerrar";
+    modalInstrucciones.btnForma = "circle";
+    modalInstrucciones.btnCerrarFondoColor = color(255);
+    modalInstrucciones.btnCerrarTamanio = 88;
+    // TODO: insertar iconos
 
   }
   

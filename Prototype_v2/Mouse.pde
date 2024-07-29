@@ -14,10 +14,14 @@ int abrirDialogAbierto = 0;
 class Mouse {
   boolean rectClick = false;  
   boolean circleClick = false;
+
   Mouse() {
     // Constructor
   }
-  /** @function pressed Observa si el mouse fue presionado con click izquierdo */
+
+  /** 
+   * @function pressed Observa si el mouse fue presionado con click izquierdo 
+   */
   void pressed(String id, boolean circleOver, boolean rectOver) {
     // Botón Izquierdo
     if (mousePressed == true && mouseButton == LEFT) {
