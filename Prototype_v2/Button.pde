@@ -8,27 +8,26 @@ class Button {
   Mouse mouse = new Mouse();
 
   // propiedades iniciales del botón
-  String id = "idButton";
   String forma = "rect";
-
-  color rectColor = color(0);
-  color rectHighlight = color(rectColor, 51);
-  boolean conColorFondoPrincipal = true;
-
-  color colorBorde = color(255);
-  int anchoBorde = 1;
-  boolean conBorde = true;
-
+  String id = "btnId";
+  
   int rectX;
   int rectY;
   int rectAlto = 72;
   int rectAncho;
+  
+  color fondoColor = color(0);
+  color fondoColorResaltado = color(fondoColor, 71);
+  color bordeColor = color(255);  
+  int bordeAncho = 1;
+  boolean conBorde = true;
+  boolean btnConBorde = conBorde;
 
-  int rectTextSize = 56;
+  String texto = "Botón";
+  int textoTamanio = 56;
   color colorTexto = color(0, 408, 612, 816);
-  String rectText = "Botón";
-  int rectTextX = width/2;
-  int rectTextY = rectY + (rectAlto/2) - (rectTextSize/5);
+  int textoX = width/2;
+  int textoY = rectY + (rectAlto/2) - (textoTamanio/5);
 
   int posicionXButton;
   int posicionYButton;
@@ -50,7 +49,7 @@ class Button {
   int circleX;
   int circleY;
   boolean circleOver = false;
-
+  
   Button() {
     // Constructor
   }
@@ -60,7 +59,7 @@ class Button {
     this.rectAncho = rectAncho;
     this.rectX = rectX;
     this.rectY = rectY - espaciado;
-    rectTextY = rectY;
+    textoY = rectY;
   }
 
   /**
@@ -69,31 +68,45 @@ class Button {
   void render() {
     // actualiza posición del cursor
     update(mouseX, mouseY);
+    
+    String btnId = id;
+    String btnForma = forma;    
+    color btnFondoColor = fondoColor;
+    color btnFondoColorResaltado = fondoColorResaltado;
+    color btnBordeColor = bordeColor;
+    int btnBordeAncho = bordeAncho;
+    String btnRectText = texto;
+    int btnRectTextoTamanio = textoTamanio;
+    int btnRectTextoX = textoX;
+    int btnRectTextY = textoY;  
 
     // Dibuja botones
-    switch(forma) {
+    switch(btnForma) {
     case "rect":
-      // si hay over cambia de color el fondo
+      // si hay over cambia el color del fondo con o si borde
       if (rectOver) {
-        fill(rectHighlight);
-        strokeWeight(anchoBorde);
-      } else {
-        fill(rectColor);
-        if(!conColorFondoPrincipal) {
+        fill(btnFondoColorResaltado);
+        if(btnFondoColor == color(0)) {
           strokeWeight(0);
         } else {
-          strokeWeight(anchoBorde);
+          strokeWeight(btnBordeAncho);
+        }
+      } else {
+        fill(btnFondoColor);
+        if(btnFondoColor == color(0)) {
+          strokeWeight(0);
+        } else {
+          strokeWeight(btnBordeAncho);
         }
       }
       // dibuja la figura
-      stroke(colorBorde);
-
+      stroke(btnBordeColor);
       rect(rectX, rectY, rectAncho, rectAlto);
       // dibuja el texto
-      textSize(rectTextSize);
+      textSize(btnRectTextoTamanio);
       textAlign(CENTER, CENTER);
       fill(colorTexto);
-      text(rectText, rectTextX, rectTextY);
+      text(btnRectText, btnRectTextoX, btnRectTextY);
       break;
 
     case "circle":

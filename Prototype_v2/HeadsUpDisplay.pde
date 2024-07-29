@@ -4,7 +4,7 @@
  * el backend y el frontend del proyecto.
  *
  * @property {Object} controladorDialogo Indica el controlador de diálogo
- * @property {Object} modalBienvenido Indica el modal de bienvenida
+ * @property {Object} modalBienvenida Indica el modal de bienvenida
  * @property {Object} modalInstrucciones Indica el modal de intrucciones
 
  * @property {function} display Renderea todo lo que se va a dibujar
@@ -17,7 +17,7 @@
 class HeadsUpDisplay {
   ControladorDialogo controladorDialogo = new ControladorDialogo();
 
-  Modal modalBienvenido = new Modal();
+  Modal modalBienvenida = new Modal();
   Modal modalInstrucciones = new Modal();
 
   HeadsUpDisplay() {
@@ -43,7 +43,7 @@ class HeadsUpDisplay {
     // abrir modal
     switch(opcionDialogAbierto) {
     case 0:
-      modalBienvenido.show();
+      modalBienvenida.show();
       break;
     case 1:
       modalInstrucciones.show();
@@ -62,25 +62,21 @@ class HeadsUpDisplay {
    */
   void construyeModalBienvenido() {
     // propiedades
-    modalBienvenido.id = "dialogBienvenido";
-    modalBienvenido.titulo = "Bievenida";
-    modalBienvenido.texto = "";
-
+    modalBienvenida.id = "dialogBienvenido";
+    modalBienvenida.titulo = "Bievenida";
+    modalBienvenida.texto = "";
     // btn instrucciones
-    modalBienvenido.conBtnUnoInferior = true; // TODO: modalBienvenida.conBtnInferiorUno
-
-    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones"; // TODO: modalBienvenida.btnId
-    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0); // .BtncolorFondo
-    modalBienvenido.colorFondoPrincipalBtnUnoInferior = false;
-    modalBienvenido.tamanioTextoBtnUnoInferior = 24; // .btnTamanioTexto
-    modalBienvenido.textoBtnUnoInferior = "Instrucciones"; // .btnTexto
+    modalBienvenida.conBtnInferiorUno = true; // TODO: modalBienvenida.conBtnInferiorUno
+    modalBienvenida.btnInferiorUnoId = "idBtnInstrucciones";     
+    modalBienvenida.btnInferiorUnoColorFondo = color(255, 255, 255, 0);
+    modalBienvenida.btnUnoInferiorTexto = "Instrucciones"; 
+    modalBienvenida.btnInferiorUnoTextoTamanio = 24;
     // btn comenzar
-    modalBienvenido.conBtnDosInferior = false;
-    modalBienvenido.idBtnDosInferior = "idBtnComenzar";
-    modalBienvenido.colorFondoBtnDosInferior = color(0);
-    modalBienvenido.colorFondoPrincipalBtnDosInferior = true;
-    modalBienvenido.tamanioTextoBtnDosInferior = 56;
-    modalBienvenido.textoBtnDosInferior = "Comenzar";
+    modalBienvenida.conBtnInferiorDos = true;
+    modalBienvenida.btnInferiorDosId = "idBtnComenzar";
+    modalBienvenida.btnInferiorDosColorFondo = color(0);    
+    modalBienvenida.btnDosInferiorTexto = "Comenzar";
+    modalBienvenida.btnInferiorDosTextoTamanio = 56;
   }
   /** 
    * @function construyeModalInstrucciones Método para construir las propiedades 
@@ -91,6 +87,12 @@ class HeadsUpDisplay {
     modalInstrucciones.id = "dialogInstrucciones";
     modalInstrucciones.titulo = "Instrucciones";
     modalInstrucciones.texto = "";
+    // btn instrucciones
+    modalInstrucciones.conBtnInferiorUno = true;    
+    modalInstrucciones.btnInferiorUnoId = "idBtnListo";
+    modalInstrucciones.btnInferiorUnoColorFondo = color(255, 255, 255, 0);
+    modalInstrucciones.btnUnoInferiorTexto = "Listo";
+    modalInstrucciones.btnInferiorUnoTextoTamanio = 56;
 
     // btn cerrar
     modalInstrucciones.conBtnCerrar = false;
@@ -98,14 +100,7 @@ class HeadsUpDisplay {
     modalInstrucciones.formaBtn = "circle";
     modalInstrucciones.colorFondoBtnCerrar = color(255);
     modalInstrucciones.tamanioBtnCerrar = 88;
-    modalInstrucciones.textoBtnCerrar = "C";
-    // btn instrucciones
-    modalInstrucciones.conBtnUnoInferior = true;    
-    modalInstrucciones.idBtnUnoInferior = "idBtnListo";
-    modalInstrucciones.colorFondoBtnUnoInferior = color(0);
-    modalBienvenido.colorFondoPrincipalBtnUnoInferior = true;
-    modalInstrucciones.tamanioTextoBtnUnoInferior = 56;
-    modalInstrucciones.textoBtnUnoInferior = "Listo";
+
   }
   
   /** @function update Método para actualizar */
