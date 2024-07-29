@@ -1,7 +1,7 @@
 {
     "name": "thesis-project",
     "version": "2.0.0-beta.5",
-    "description": "",
+    "description": " Interfaz-interactiva para la visualización de un fenómeno astronómico",
     "author": "ciretorres",
     "repository": {
         "type": "git",
