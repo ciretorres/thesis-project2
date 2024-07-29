@@ -63,17 +63,17 @@ class HeadsUpDisplay {
   void construyeModalBienvenido() {
     // propiedades
     modalBienvenido.id = "dialogBienvenido";
-    modalBienvenido.tituloModal = "Bievenida";
-    modalBienvenido.textoModal = "texto";
+    modalBienvenido.titulo = "Bievenida";
+    modalBienvenido.texto = "";
 
     // btn instrucciones
     modalBienvenido.conBtnUnoInferior = true; // TODO: modalBienvenida.conBtnInferiorUno
 
-    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones"; // TODO: modalBienvenida.idBtn
-    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0); // .colorFondoBtn
+    modalBienvenido.idBtnUnoInferior = "idBtnInstrucciones"; // TODO: modalBienvenida.btnId
+    modalBienvenido.colorFondoBtnUnoInferior = color(255, 255, 255, 0); // .BtncolorFondo
     modalBienvenido.colorFondoPrincipalBtnUnoInferior = false;
-    modalBienvenido.tamanioTextoBtnUnoInferior = 24; // .tamanioTextoBtn
-    modalBienvenido.textoBtnUnoInferior = "Instrucciones"; // .textoBtn
+    modalBienvenido.tamanioTextoBtnUnoInferior = 24; // .btnTamanioTexto
+    modalBienvenido.textoBtnUnoInferior = "Instrucciones"; // .btnTexto
     // btn comenzar
     modalBienvenido.conBtnDosInferior = false;
     modalBienvenido.idBtnDosInferior = "idBtnComenzar";
@@ -89,8 +89,8 @@ class HeadsUpDisplay {
   void construyeModalIntrucciones() {
     // propiedades
     modalInstrucciones.id = "dialogInstrucciones";
-    modalInstrucciones.tituloModal = "Instrucciones";
-    modalInstrucciones.textoModal = "";
+    modalInstrucciones.titulo = "Instrucciones";
+    modalInstrucciones.texto = "";
 
     // btn cerrar
     modalInstrucciones.conBtnCerrar = false;

@@ -3,33 +3,46 @@
  * que presentará información relevante o instrucciones del sistema.
  *
  * @property {String} id Indica el identificador del modal
- * @property {int} anchoModal Indica el ancho del modal
- * @property {int} altoModal Indica el alto del modal 
- * @property {int} positionXModal Indica la posición horizontal del modal
- * @property {int} positionYModal Indica la posición vertical del modal
- * @property {color} backgroundColorModal Indica el color del fondo del modal
- * @property {color} strokeColorModal Indica el color del borde del modal
- * @property {color} colorTextModal Indica el color del texto del modal
- * @property {String} tituloModal Indica el título del modal
- * @property {String} textoModal Indica el texto en el cuerpo del modal
+ * @property {int} ancho Indica el ancho del modal
+ * @property {int} alto Indica el alto del modal 
+ * @property {int} x Indica la posición horizontal del modal
+ * @property {int} y Indica la posición vertical del modal
+ * @property {color} fondoColor Indica el color del fondo del modal
+ * @property {color} bordeColor Indica el color del borde del modal
+ * @property {color} textoColor Indica el color del texto del modal
+ * @property {String} titulo Indica el título del modal
+ * @property {String} texto Indica el texto en el cuerpo del modal
  */
 class Modal {
   // si el ancho de la pantalla es mayor
   boolean fullScreen = width > 1366;
-  // propiedades Dialogo
+  // Propiedades Diálogo
   String id;  
-  int anchoModal = width - (width/2);
-  int altoModal = height - (height/3);
-  int positionXModal = width/2 - (anchoModal/2);
-  int positionYModal = height/2 - (altoModal/2);
-  color backgroundColorModal = color(102, 102, 102, 191);
-  color colorTextModal = color(0);
-  color strokeColorModal = color(102, 102, 102, 191);
-  String tituloModal = "# Título";
+  String idModal = id;
+  // Dimensiones
+  int ancho = width - (width/2);
+  int anchoModal = ancho;
+  int alto = height - (height/3);
+  int altoModal = alto;
+  // Posición
+  int x = width/2 - (anchoModal/2);
+  int positionXModal = x;
+  int y =  height/2 - (altoModal/2);
+  int positionYModal = y;
+  // Color
+  color fondoColor = color(102, 102, 102, 191);
+  color backgroundColorModal = fondoColor;
+  color bordeColor = color(102, 102, 102, 191);
+  color strokeColorModal = bordeColor;
+  // Texto
+  color textoColor = color(0);
+  color colorTextModal = textoColor;
   String titulo = "# Título";
-  String textoModal = "Texto";
+  String tituloModal = titulo;
+  String texto = "Texto";
+  String textoTitulo = texto;
 
-  // declara botón
+  // declara object Botón en caso de necesitar
   Button btnInstrucciones;
   Button btnCerrar = new Button();
   Button btnComenzar;
@@ -79,7 +92,7 @@ class Modal {
     // this.posicionX = positionXModal;
     // this.posicionY = positionYModal;
     // this.colorFondo = backgroundColorModal;
-    titulo = tituloModal;
+    // titulo = tituloModal;
   }
 
   /**
@@ -144,10 +157,10 @@ class Modal {
     textSize(tituloSize);
     textAlign(LEFT, TOP);
     fill(colorTextModal);
-    text(titulo, positionXModal + espaciado, positionYModal);
+    text(tituloModal, positionXModal + espaciado, positionYModal);
     // texto dialog
     textSize(textoSize);
-    text(textoModal, positionXModal + espaciado, positionYModal + tituloSize + espaciado);
+    text(textoTitulo, positionXModal + espaciado, positionYModal + tituloSize + espaciado);
   }
 
   /**
