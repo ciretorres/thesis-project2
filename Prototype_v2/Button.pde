@@ -1,34 +1,43 @@
 /**
- * @class Button permite dibujar botones en forma de círculo y rectángulo como referencia.
+ * @class Button Permite dibujar botones en forma de círculo y rectángulo.
  *
- * @property {String} id (default: "btnId") Indica el identificador del botón
- * @property {String} forma (default: "rect") Indica la forma del botón
- * @property {int} ancho Indica el ancho del botón
- * @property {int} alto (default: 72) Indica el alto del botón
- * @property {int} x Indica la posición horizontal del botón
- * @property {int} y Indica la posición vertical del botón
- * @property {color} fondoColor (default: color(0)) Indica el color de fondo del botón
- * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) Indica el color de fondo resaltado del botón
- * @property {color} bordeColor (default: color(255)) Indica el color del borde del botón
- * @property {int} bordeAncho (default: 1) Indica el ancho del borde del botón
- * @property {boolean} btnConBorde (default: true) Indica si tiene borde el botón
- * @property {String} texto (default: "Botón") Indica el texto del botón
- * @property {int} textoTamanio (default: 56) Indica el tamaño del texto del botón
- * @property {color} colorTexto (default: color(0, 408, 612, 816)) Indica el color del texto del botón
- * @property {int} textoTamanio (default: 56) Indica la posición del texto horizontal botón
- * @property {boolean} rectOver (default: false) Indica si está enfocado el botón rect
+ * @property {String} id (default: "btnId") Indica el identificador.
+ * @property {String} forma (default: "rect") Indica la forma.
+ * @property {int} ancho Indica el ancho.
+ * @property {int} alto (default: 72) Indica el alto.
+ * @property {int} x Indica la posición horizontal.
+ * @property {int} y Indica la posición vertical.
+ * @property {color} fondoColor (default: color(0)) Indica el color de fondo.
+ * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) 
+ * Indica el color para el fondo resaltado.
+ * @property {color} bordeColor (default: color(255)) Indica el color
+ * para el borde.
+ * @property {int} bordeAncho (default: 1) Indica el ancho del borde.
+ * @property {boolean} btnConBorde (default: true) Indica si tiene borde.
+ * @property {String} texto (default: "Botón") Indica el texto del botón.
+ * @property {int} textoTamanio (default: 56) Indica el tamaño del texto.
+ * @property {color} colorTexto (default: color(0, 408, 612, 816)) Indica 
+ * el color del texto.
+ * @property {int} textoTamanio (default: 56) Indica la posición del texto 
+ * en horizontal.
+ * @property {boolean} rectOver (default: false) Indica si está enfocado 
+ * el botón rect.
  *
- * @property {int} btnCirculoTamanio Indica el tamaño del botón círculo
- * @property {int} btnCirculoX Indica la posición horizontal del botón círculo
- * @property {color} btnCirculoFondoColor Indica el color de fondo del botón círculo
- * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) Indica el color de fondo resaltado del botón
- * @property {boolean} CircleOver (default: false) Indica si está enfocado el botón circle
+ * @property {int} btnCirculoTamanio Indica el tamaño del botón círculo.
+ * @property {int} btnCirculoX Indica la posición horizontal del botón círculo.
+ * @property {color} btnCirculoFondoColor Indica el color de fondo del círculo.
+ * @property {color} fondoColorResaltado (default: color(fondoColor, 71)) 
+ * Indica el color de fondo resaltado del botón
+ * @property {boolean} CircleOver (default: false) Indica si está enfocado 
+ * el botón circle.
  *
- * @property {Object} over Indica el objeto con las funciones para observar el enfoque de la usuaria
- * @property {Object} mouse Indica el objeto con las funciones para var el click de la usuaria
+ * @property {Object} over Indica el objeto con las funciones para observar 
+ * el enfoque de la usuaria.
+ * @property {Object} mouse Indica el objeto con las funciones para var el 
+ * click de la usuaria.
  *
- * @property {function} render Renderea todo lo que se va a dibujar
- * @property {function} update Observa si se enfoca un botón y si lo presiona
+ * @property {function} render Renderea todo lo que se va a dibujar.
+ * @property {function} update Observa si se enfoca un botón y si lo presiona.
  */
 
 class Button {
@@ -58,6 +67,7 @@ class Button {
   color btnCirculoFondoColorResaltado = color(btnCirculoFondoColor, 51);
   boolean circleOver = false;
   
+  // inicia opciones para Over y Mouse
   Over over = new Over();
   Mouse mouse = new Mouse();
 
@@ -65,7 +75,9 @@ class Button {
     // Constructor
   }
 
-  /** @function render Método donde se renderea todo lo que se va a dibujar */
+  /** 
+   * Método donde se renderea todo lo que se va a dibujar.
+   */
   void render() {
     // actualiza posición del cursor
     update();
@@ -121,13 +133,14 @@ class Button {
       }
       // dibuja la figura
       stroke(0);
-      ellipse(btnCirculoX, btnCirculoY, btnCirculoTamanio, btnCirculoTamanio);
+      ellipse(btnCirculoX, btnCirculoY, btnCirculoTamanio, 
+      btnCirculoTamanio);
       break;
     }
   }
 
   /** 
-   * @function update Método para observar si se enfoca un botón y si lo presiona 
+   * Método para observar si se enfoca un botón y si lo presiona.
    */
   void update() {
     // opera si se hace hover en el circulo o el rec y avisa

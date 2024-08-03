@@ -1,22 +1,25 @@
 import peasy.*;
 /**
  * Prototype_v2
- * Interfaz-interactiva para la visualización de un fenómeno
- * astronómico. En este caso el módulo distancia que relaciona
- * la distancia con el brillo de una estrella.
- * @since 07/2024
+ * Interfaz-interactiva para la visualización de un fenómeno astronómico. 
+ * En este caso el módulo distancia que relaciona la distancia con el brillo 
+ * de una estrella.
  *
- * @property {Object} camera Indica el objecto de la cámara Peasycam
- * @property {int} distanciaCamera Indica la distancia de la cámara en pixeles desde el origen (0,0,0)
- * @property {Object} HUD Indica el objecto del HeadsUpDisplay
+ * @property {Object} camera Indica el objeto de la cámara Peasycam.
+ * @property {int} distanciaCamera Indica la distancia de la cámara en 
+ * pixeles desde el origen (0,0,0).
+ * @property {Object} HUD Indica el objeto del HeadsUpDisplay.
  *
- * @property {color} baseColor (default: color(0)) Indica el color base
- * @property {color} backgroundColor (default: baseColor) Indica el color del fondo
- * @property {int} espaciado (default: 24) Indica el tamaño del espaciado
- * @property {int} borderRadius (default: 20) Indica el tamaño del radio del borde
- * @property {int} tituloTamanio (default: 24) Indica el tamaño del titulo
- * @property {int} textoTamanio (default: 24) Indica el tamaño del texto
- * @property {int} opcionDialogAbierto (default: 0) Indica la opción de diálogo seleccionada
+ * @property {color} baseColor (default: color(0)) Indica el color base.
+ * @property {color} backgroundColor (default: baseColor) Indica el color 
+ * para el fondo.
+ * @property {int} espaciado (default: 24) Indica el tamaño del espaciado.
+ * @property {int} borderRadius (default: 20) Indica el tamaño del radio 
+ * para los bordes.
+ * @property {int} tituloTamanio (default: 24) Indica el tamaño del titulo.
+ * @property {int} textoTamanio (default: 24) Indica el tamaño del texto.
+ * @property {int} opcionDialogAbierto (default: 0) Indica la opción que 
+ * debe estar abierta para el diálogo modal.
  */
 PeasyCam camera;
 int distanciaCamera = 80;
@@ -59,7 +62,7 @@ void setup() {
 void draw() {
   // Color de fondo
   background(backgroundColor);
-  lights(); // Luz del ambiente predeterminada
+  lights(); // luz del ambiente predeterminada
 
   /**
    * Push-Pop the current transformation matrix onto the matrix stack.

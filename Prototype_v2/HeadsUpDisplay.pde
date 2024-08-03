@@ -3,20 +3,21 @@
  * directamente con la interfaz de usuaria. Controla el diálogo entre
  * el backend y el frontend del proyecto.
  *
- * @property {Object} controladorDialogo Indica el controlador de diálogo
- * @property {Object} modalBienvenida Indica el modal de bienvenida
- * @property {Object} modalInstrucciones Indica el modal de intrucciones
+ * @property {Object} controladorDialogo Indica el controlador de diálogo.
+ * @property {Object} modalBienvenida Indica el modal de bienvenida.
+ * @property {Object} modalInstrucciones Indica el modal de intrucciones.
 
- * @property {function} display Renderea todo lo que se va a dibujar
+ * @property {function} display Renderea todo lo que se va a dibujar.
  *
  * @property {function} contruyeModalBienvenido Contruye el modal con las 
- * propiedades de bienvenida
+ * propiedades de bienvenida.
  * @property {function} construyeModalInstrucciones Contruye el modal con
- * las instrucciones
+ * las instrucciones.
  */
 class HeadsUpDisplay {
+  // inicia controlador de diálogo
   ControladorDialogo controladorDialogo = new ControladorDialogo();
-
+  // inicia modales
   Modal modalBienvenida = new Modal();
   Modal modalInstrucciones = new Modal();
 
@@ -27,11 +28,13 @@ class HeadsUpDisplay {
     construyeModalIntrucciones();    
   }
 
-  /** @function display Método donde se renderea todo lo que se va a dibujar. */
+  /** 
+   * Método donde se renderea todo lo que se va a dibujar. 
+   */
   void display() {
     update();
     /**
-     * Utility methods to permit the use of a Heads-Up Display
+     * Utility methods to permit the use of a Heads-Up Display.
      * Begin and end screen-aligned 2D-drawing.
      * @see https://mrfeinberg.com/peasycam/reference/index.html
      */  
@@ -56,8 +59,7 @@ class HeadsUpDisplay {
   }
   
   /** 
-   * @function construyeModalBienvenido Método para construir las propiedades 
-   * del modal de bienvenida 
+   * Método para construir las propiedades del modal de bienvenida.
    */
   void construyeModalBienvenido() {
     // propiedades
@@ -78,8 +80,7 @@ class HeadsUpDisplay {
     modalBienvenida.btnInferiorDosTextoTamanio = 56;
   }
   /** 
-   * @function construyeModalInstrucciones Método para construir las propiedades 
-   * del modal con las instrucciones
+   * Método para construir las propiedades del modal con las instrucciones.
    */
   void construyeModalIntrucciones() {
     // propiedades
