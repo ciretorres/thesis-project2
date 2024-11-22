@@ -20,11 +20,10 @@ class Mouse {
     // Constructor
   }
 
-  /** 
-   * Observa si el mouse fue presionado con click izquierdo.
-   */
+  /** Observa si el mouse fue presionado con click izquierdo */
   void pressed(String id, boolean circleOver, boolean rectOver) {
     // Botón Izquierdo
+    // TODO: utilizar !== para colocar el else antes
     if (mousePressed == true && mouseButton == LEFT) {
       // Circulos
       if (circleOver) {

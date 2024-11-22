@@ -22,7 +22,7 @@ class Modal {
   // TODO: fix esta función
   boolean fullScreen = width > 1366;
 
-  // Propiedades Diálogo
+  /** Propiedades Diálogo */
   String id;
   int ancho = width - (width/2);
   int alto = height - (height/3);
@@ -39,7 +39,7 @@ class Modal {
   Button btnCerrar = new Button();
   Button btnComenzar = new Button();
 
-  // propiedades botones
+  /** propiedades botones */
   String btnForma = "rect";
   // btn 1
   boolean conBtnInferiorUno = false;
@@ -83,20 +83,18 @@ class Modal {
   color backgroundColorModal = fondoColor;
   color colorTextModal = textoColor;
 
-  /** 
-   * Método donde se renderea todo lo que se va a dibujar.
-   */
+  // Método donde se renderea todo lo que se va a dibujar
   void show() {
     String tituloModal = titulo;
     String textoModal = texto;
 
-    // Dibuja rectángulo modal
+    /** Dibuja rectángulo modal */
     fill(backgroundColorModal);
     noStroke();
     rect(positionXModal, positionYModal, anchoModal, altoModal, 
     borderRadius);
 
-    // Dibuja botones
+    /** Dibuja botones */
     if (conBtnCerrar) {
       inicializaBtnCerrar();
       btnCerrar.render();
@@ -110,6 +108,7 @@ class Modal {
       btnInstrucciones.render();
     }
 
+    /** Dibuja textos */
     // dibuja titulo modal
     textSize(tituloTamanio);
     textAlign(LEFT, TOP);
@@ -121,7 +120,7 @@ class Modal {
     tituloTamanio + espaciado);
   }
 
-  /** Inicializa el botón de cerrar */
+  // Inicializa el botón de cerrar
   void inicializaBtnCerrar() {
     btnCerrar.id = btnCerrarId;
     btnCerrar.forma = btnForma;
@@ -132,7 +131,7 @@ class Modal {
     + (btnCerrar.btnCirculoTamanio/2) + espaciado;
     btnCerrar.btnCirculoFondoColor = btnCerrarFondoColor;
   }
-  /** Inicializa el botón de comenzar */
+  // Inicializa el botón de comenzar
   void inicializaBtnComenzar() {
     btnComenzar.id = btnInferiorDosId;
     btnComenzar.ancho = btnInferiorDosAncho;
@@ -142,7 +141,7 @@ class Modal {
     btnComenzar.texto = btnInferiorDosTexto;
     btnComenzar.textoTamanio = btnInferiorDosTextoTamanio;
   }
-  /** Inicializa el botón de instrucciones */
+  // Inicializa el botón de instrucciones
   void inicializaBtnInstrucciones() {
     btnInstrucciones.id = btnInferiorUnoId;
     btnInstrucciones.ancho = btnInferiorUnoAncho;

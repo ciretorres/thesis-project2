@@ -28,11 +28,10 @@ class HeadsUpDisplay {
     construyeModalIntrucciones();    
   }
 
-  /** 
-   * Método donde se renderea todo lo que se va a dibujar. 
-   */
+  // Método donde se renderea todo lo que se va a dibujar
   void display() {
     update();
+
     /**
      * Utility methods to permit the use of a Heads-Up Display.
      * Begin and end screen-aligned 2D-drawing.
@@ -58,9 +57,7 @@ class HeadsUpDisplay {
     camera.endHUD();
   }
   
-  /** 
-   * Método para construir las propiedades del modal de bienvenida.
-   */
+  // Método para construir las propiedades del modal de bienvenida
   void construyeModalBienvenido() {
     // propiedades
     modalBienvenida.id = "dialogBienvenido";
@@ -79,9 +76,7 @@ class HeadsUpDisplay {
     modalBienvenida.btnInferiorDosTexto = "Comenzar";
     modalBienvenida.btnInferiorDosTextoTamanio = 56;
   }
-  /** 
-   * Método para construir las propiedades del modal con las instrucciones.
-   */
+  // Método para construir las propiedades del modal con las instrucciones
   void construyeModalIntrucciones() {
     // propiedades
     modalInstrucciones.id = "dialogInstrucciones";
@@ -103,7 +98,7 @@ class HeadsUpDisplay {
 
   }
   
-  /** @function update Método para actualizar */
+  /** @function update Método para actualizar cada frame */
   void update() {
 
   }

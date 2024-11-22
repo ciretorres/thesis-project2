@@ -26,7 +26,7 @@ int distanciaCamera = 80;
 
 HeadsUpDisplay HUD;
 
-// Estilos generales
+/** estilos generales */
 color baseColor = color(0);
 // color currentColor = baseColor;
 color backgroundColor = baseColor;
@@ -35,10 +35,10 @@ int espaciado = 24;
 int borderRadius = 20;
 int tituloTamanio = 56;
 int textoTamanio = 24;
-// variables globales
+/** variables globales */
 int opcionDialogAbierto = 0;
 
-/** Método para configurar el entorno */
+// Método para configurar el entorno
 void setup() {
   // Tamaño de la pantalla
   // size(1366, 768, P3D);
@@ -58,7 +58,7 @@ void setup() {
   // iniciando interfaz gráfica
   HUD = new HeadsUpDisplay();
 }
-/** Método para dibujar mientras se ejecuta el entorno */
+// Método para dibujar mientras se ejecuta el entorno
 void draw() {
   // Color de fondo
   background(backgroundColor);
@@ -78,7 +78,7 @@ void draw() {
 
   popMatrix();
 }
-/** Método para enterarse cuando se dió click */
+// Método para enterarse cuando se dió click
 void mouseClicked() {
   println("click");
   println(opcionDialogAbierto);
