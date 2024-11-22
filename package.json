@@ -1,15 +1,15 @@
 {
-    "name": "thesis-project",
-    "version": "2.0.0-beta.6",
-    "description": "Interfaz-interactiva para la visualización de un fenómeno astronómico",
-    "author": "ciretorres",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ciretorres/thesis-project.git"
-    },
-    "bugs": {
-        "url": "https://github.com/ciretorres/thesis-project/issues"
-    },
-    "homepage": "https://github.com/ciretorres/thesis-project#readme",
-    "keywords": []
+  "name": "thesis-project",
+  "version": "2.0.0-beta.6",
+  "description": "Interfaz-interactiva para la visualización de un fenómeno astronómico",
+  "author": "ciretorres",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciretorres/thesis-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ciretorres/thesis-project/issues"
+  },
+  "homepage": "https://github.com/ciretorres/thesis-project#readme",
+  "keywords": []
 }
