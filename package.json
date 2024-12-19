@@ -1,13 +1,25 @@
 {
   "name": "thesis-project",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "author": "ciretorres",
   "publishConfig": {
     "access": "public"
   },
   "description": "Interfaz-interactiva para la visualización de un fenómeno astronómico",
   "keywords": [
-    "p5", "p5.js", "three", "three.js", "vue", "javascript", "3d", "virtual-reality", "augmented-reality", "webgl", "canvas", "svg", "html5"
+    "p5",
+    "p5.js",
+    "three",
+    "three.js",
+    "vue",
+    "javascript",
+    "3d",
+    "virtual-reality",
+    "augmented-reality",
+    "webgl",
+    "canvas",
+    "svg",
+    "html5"
   ],
   "type": "module",
   "license": "LGPL-3.0-only",
@@ -15,12 +27,9 @@
   "files": [
     "README.md"
   ],
-  "scripts": {
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/ciretorres/thesis-project"
