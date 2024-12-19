@@ -1,3 +1,11 @@
+Ventajas:
+
+- creo que con solo vite es más ligero
+- puedo instalar la dependencia con npm
+- me levanta un servidor local que es el mismo que instala vscode live server, pero no funciona solo
+- cargar los estilos mediante el ´main.js´
+- puedes colocar un canvas estático con un id en el html y asignárselo al render webgl de three js
+
 # threevite
 
 https://codepen.io/rachsmith/post/beginning-with-3d-webgl-pt-1-the-scene

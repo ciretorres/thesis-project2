@@ -1,11 +1,22 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import * as THREE from 'three'; /**@see https://www.npmjs.com/package/three?activeTab=versions */
-import * as dat from 'dat.gui'; /**@see https://github.com/dataarts/dat.gui */
-import WebGL from 'three/addons/capabilities/WebGL.js'; 
+import * as dat from "dat.gui"; /**@see https://github.com/dataarts/dat.gui */
+import * as THREE from "three"; /**@see https://www.npmjs.com/package/three?activeTab=versions */
+import WebGL from "three/addons/capabilities/WebGL.js";
 
 function init() {
-  const canvas = document.querySelector('#b')
+  /**
+   * Renders a view that contains your camera's "picture"
+   * @use https://threejs.org/docs/api/en/renderers/WebGLRenderer.html
+   */
+  let alpha = true;
+  const canvas = document.querySelector("#b");
+  const renderer = new THREE.WebGLRenderer({
+    alpha: alpha,
+    antialias: true,
+    canvas,
+  });
+
   // a scene is the space in which you can places objects,cameras and lighting
   // @see https://threejs.org/docs/#api/en/scenes/Scene
   const scene = new THREE.Scene();
@@ -20,13 +31,13 @@ function init() {
    * new THREE.PerspectiveCamera(fov, aspect, near, far)
    * @see https://threejs.org/docs/api/en/cameras/PerspectiveCamera.html
    */
-  const camera = new THREE.PerspectiveCamera( 
-    75, 
-    window.innerWidth / window.innerHeight, 
-    0.1, 
-    1000 
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
   );
-  camera.position.set( 0, 0, 5 );
+  camera.position.set(0, 0, 5);
   // camera.position.z = 100;
   // camera.lookAt( 0, 0, 0 );
 
@@ -34,51 +45,52 @@ function init() {
   // const controls = new THREE.OrbitControls( camera );
   // controls.autoRotate = true;
 
-  // renders a view that contains your camera's "picture"
-  // @use https://threejs.org/docs/api/en/renderers/WebGLRenderer.html
+  // TODO: implementar método resize
+  // este resize solo lo hace una vez al actualizar el servidor
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
-  let alpha = true
-  const renderer = new THREE.WebGLRenderer({alpha: alpha});
-  renderer.setSize( window.innerWidth, window.innerHeight );
-
+  // TODO: revisar esta instrucción porque si ya se logró utilizar
+  // el canvas estático no tiene caso anidarlo en el main con js
   // adds the renderer element to the DOM so it is in our page
-  const main = document.querySelector('main');
-  main.appendChild( renderer.domElement );
-
+  const main = document.querySelector("main");
+  main.appendChild(renderer.domElement);
+  // document.body.appendChild(renderer.domElement);
 
   // pt.2
   // Creates a box, geometry, 3d model, cube or mesh
   // TODO: create a sphere
   // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-  const geometry = new THREE.SphereGeometry(24, 32, 32 );
+  const geometry = new THREE.SphereGeometry(24, 32, 32);
 
   /**
    * Creates a material that describe the appereance of objects
-   * @see https://threejs.org/docs/index.html#api/en/constants/Materials 
+   * @see https://threejs.org/docs/index.html#api/en/constants/Materials
    * @see https://threejs.org/manual/#en/materials
    */
   // use hex string
-  let color = new THREE.Color( "#7833aa" );
+  let color = new THREE.Color("#7833aa");
   let hex = color.getHex();
   // use rgba string
   // let color = new THREE.Color("rgba(188, 141, 190, 1)");
-  let wireframe = true
+  let wireframe = true;
   // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
   // const material = new THREE.MeshBasicMaterial( { color: 0xfd59d7 } );
   // const material = new THREE.MeshNormalMaterial();
-  const material = new THREE.MeshBasicMaterial( {color: hex, wireframe: wireframe} );
+  const material = new THREE.MeshBasicMaterial({
+    color: hex,
+    wireframe: wireframe,
+  });
 
   // adds the geometry to the mesh and apply the material to it
-  const cube = new THREE.Mesh( geometry, material );
-  scene.add( cube );
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
   // scene.add( mesh );
 
   // pt.3
   // Add lights
-  const light = new THREE.PointLight(0xFFFF00);
-  light.position.set( 10, 50, 0 );
+  const light = new THREE.PointLight(0xffff00);
+  light.position.set(10, 50, 0);
   scene.add(light);
-
 
   function animate() {
     // rotate cube
@@ -86,12 +98,12 @@ function init() {
     // cube.rotation.y += 0.01;
 
     // render the scene
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
   }
 
   // a render loop
   const render = () => {
-    requestAnimationFrame( render );
+    requestAnimationFrame(render);
 
     // rotate cube
     cube.rotation.x += 0.0001;
@@ -102,27 +114,28 @@ function init() {
     renderer.render(scene, camera);
   };
 
-
-
   // renderer.setAnimationLoop( animate );
-  if ( WebGL.isWebGL2Available() ) { 
-    // Initiate function or other initializations here 
-    // animate(); 
+  if (WebGL.isWebGL2Available()) {
+    // Initiate function or other initializations here
+    // animate();
     // renderer.setAnimationLoop( animate );
     render();
-    console.log('ay')
-  } else { 
-    const warning = WebGL.getWebGL2ErrorMessage(); 
-    document.getElementById( 'container' ).appendChild( warning ); 
+    console.log("ay");
+  } else {
+    const warning = WebGL.getWebGL2ErrorMessage();
+    document.getElementById("container").appendChild(warning);
   }
 
   // pt. 4
   // dat gui
   const gui = new dat.GUI();
+  // iniciar la gui cerrada
+  gui.close();
+
   const cameraPositionGui = gui.addFolder("camera position");
-  cameraPositionGui.add(camera.position, 'x');
-  cameraPositionGui.add(camera.position, 'y');
-  cameraPositionGui.add(camera.position, 'z');
+  cameraPositionGui.add(camera.position, "x");
+  cameraPositionGui.add(camera.position, "y");
+  cameraPositionGui.add(camera.position, "z");
   cameraPositionGui.open();
 
   const cameraProjectionGui = gui.addFolder("camera projection");
@@ -130,52 +143,52 @@ function init() {
   // cameraProjectionGui.open();
 
   const lightGui = gui.addFolder("light position");
-  lightGui.add(light.position, 'x');
-  lightGui.add(light.position, 'y');
-  lightGui.add(light.position, 'z');
+  lightGui.add(light.position, "x");
+  lightGui.add(light.position, "y");
+  lightGui.add(light.position, "z");
   // lightGui.open();
 
   const cubeGui = gui.addFolder("cube position");
-  cubeGui.add(cube.position, 'x');
-  cubeGui.add(cube.position, 'y');
-  cubeGui.add(cube.position, 'z');
+  cubeGui.add(cube.position, "x");
+  cubeGui.add(cube.position, "y");
+  cubeGui.add(cube.position, "z");
   // cubeGui.open();
-
 }
 
 function main() {
   // const canvas = document.querySelector( '#c' );
-  const renderer = new THREE.WebGLRenderer( { alpha: true } );
+  let alpha = false;
+  const renderer = new THREE.WebGLRenderer({ alpha: alpha });
 
   // creates the frustrum
   const fov = 75; // degrees
   const aspect = 2; // the canvas default
   const near = 0.1;
   const far = 5;
-  const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
   camera.position.z = 5;
 
   const scene = new THREE.Scene();
 
   // módulo de luces
   {
-    const color = 0xFFFFFF;
+    const color = 0xffffff;
     const intensity = 3;
-    const light = new THREE.DirectionalLight( color, intensity );
-    light.position.set( - 1, 2, 4 );
-    scene.add( light );
+    const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(-1, 2, 4);
+    scene.add(light);
   }
 
   const boxWidth = 1;
   const boxHeight = 1;
   const boxDepth = 1;
-  const geometry = new THREE.BoxGeometry( boxWidth, boxHeight, boxDepth );
+  const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
-  function makeInstance( geometry, color, x ) {
-    const material = new THREE.MeshPhongMaterial( { color } );
+  function makeInstance(geometry, color, x) {
+    const material = new THREE.MeshPhongMaterial({ color });
 
-    const cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
     cube.position.x = x;
 
@@ -183,9 +196,9 @@ function main() {
   }
 
   const cubes = [
-    makeInstance( geometry, 0x44aa88, 0 ),
-    makeInstance( geometry, 0x8844aa, - 2 ),
-    makeInstance( geometry, 0xaa8844, 2 ),
+    makeInstance(geometry, 0x44aa88, 0),
+    makeInstance(geometry, 0x8844aa, -2),
+    makeInstance(geometry, 0xaa8844, 2),
   ];
 
   // // const material = new THREE.MeshBasicMaterial({color: 0x44aa88});  // greenish blue
@@ -193,6 +206,7 @@ function main() {
   // const cube = new THREE.Mesh(geometry, material);
   // scene.add(cube);
 
+  // utilidad
   function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;
     const width = canvas.clientWidth;
@@ -204,7 +218,7 @@ function main() {
     return needResize;
   }
 
-  function render( time ) {
+  function render(time) {
     time *= 0.001; // convert time to seconds
 
     if (resizeRendererToDisplaySize(renderer)) {
@@ -213,26 +227,27 @@ function main() {
       camera.updateProjectionMatrix();
     }
 
-    cubes.forEach( ( cube, ndx ) => {
-      const speed = 1 + ndx * .1;
+    cubes.forEach((cube, ndx) => {
+      const speed = 1 + ndx * 0.1;
       const rot = time * speed;
       cube.rotation.x = rot;
       cube.rotation.y = rot;
-    } );
+    });
     // cube.rotation.x = time;
     // cube.rotation.y = time;
 
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
 
-    requestAnimationFrame( render );
+    requestAnimationFrame(render);
   }
-  
-  // adds the renderer element to the DOM so it is in our page
-  const main = document.querySelector('main');
-  main.appendChild( renderer.domElement );
 
-  requestAnimationFrame( render );
+  // adds the renderer element to the DOM so it is in our page
+  const main = document.querySelector("main");
+  main.appendChild(renderer.domElement);
+
+  requestAnimationFrame(render);
 }
 
-// init()
 main();
+
+init();
