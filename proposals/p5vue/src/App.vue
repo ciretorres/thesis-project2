@@ -1,86 +1,77 @@
 <script setup>
-// import P5Component from './components/P5Component.vue';
+import p5 from 'p5';
 import { onMounted, ref } from 'vue';
-// import p5 from "p5";
+import P5Component from './components/P5Component.vue';
 
 // import WebGL from 'three/addons/capabilities/WebGL.js';
 // const webGL = WebGL
-const sketch = ref()
-const canvas = ref()
+const sketch = ref();
+const canvas = ref();
 
-const makeSketch = () => {
-  canvas.value = document.querySelector('#e');
-  console.log(canvas.value)
-  sketch.value = ( s ) => {
+const generateSketch = () => {
+  // canvas.value = document.querySelector('#e');
+  // console.log(canvas.value);
+  sketch.value = (s) => {
     let x = 0;
     let y = 0;
     let z = 0;
-
     s.setup = function () {
       s.createCanvas(100, 100, this.WEBGL);
-    };    
-
+    };
     s.draw = () => {
       // s.background(0);
       s.background(255);
-
       // Enable orbiting with the mouse.
       s.orbitControl();
-
       // Set the style's sphere.
-      // s.noStroke();    
-      s.stroke(0,255,0)
-      s.fill(255);    
-      s.translate(x,y,z);    
-
+      // s.noStroke();
+      s.stroke(0, 255, 0);
+      s.fill(255);
+      s.translate(x, y, z);
       // Draw the sphere.
       // Set its radius to 30.
       s.sphere(30);
     };
-  };  
+  };
   // let myp5 = new p5(sketch.value, canvas.value);
-  new p5(sketch.value, canvas.value);
-}
+  // new p5(sketch.value, canvas.value);
+  new p5(sketch.value);
+};
 
 onMounted(() => {
-  // 
-  // makeSketch()
-
+  //
+  generateSketch();
   // new p5((sketch) => {
   //   let x = 0;
   //   let y = 0;
   //   let z = 0;
-
   //   sketch.setup = function () {
   //     console.log(this.WEBGL);
   //     sketch.createCanvas(100, 100, this.WEBGL);
   //   };
-    
   //   sketch.draw = () => {
   //     sketch.background(0);
   //     // Enable orbiting with the mouse.
   //     sketch.orbitControl();
-
   //     // Set the style's sphere.
   //     // sketch.noStroke();
   //     sketch.stroke(255, 0, 0);
   //     sketch.fill(255);
   //     sketch.translate(x,y,z);
-
   //     // Draw the sphere.
   //     // Set its radius to 30.
   //     sketch.sphere(30);
   //   };
-  // });  
-})
+  // });
+});
 </script>
 
 <template>
   <main>
     Hola
     <!-- TODO: cómo conectar un canvas -->
-     <!-- <canvas id="e"></canvas> -->
-    <!-- <P5Component /> -->
+    <canvas id="e"></canvas>
+    <P5Component />
   </main>
 </template>
 

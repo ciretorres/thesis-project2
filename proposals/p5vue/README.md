@@ -1,3 +1,22 @@
+Creo que de las desventajas que le veo a p5js con el navegador es:
+
+- el número de advertencias en la consola del browser.
+- el uso del ´this.WEBGL´para crear el canvas.
+- tienes que regresar una función objeto con dos métodos por instancia de parámetro para el ´setup´y el ´draw´
+- no he descubierto cómo colocar un canvas estático en el body y dentro del main para que lo utilice en lugar de crear uno por defecto.
+- tampoco he descubierto cómo hacer el ancho del fondo responsivo a la pantalla y que se actualice la visualización
+- estar actualizando las dependencias de vue
+
+Ventajas:
+
+- es el uso de eslint y prettier para colocarle punto y coma al final y convesiones para ES6.
+- utilizas scripts y estilos desde otra carpeta o ubicación.
+- instalar dependencias por npm en lugar de cdn o subir las librerías al repo.
+- la construcción de un build de despliegue para el ambiente.
+- el canvas lo coloca dentro del main en auto porque la jerarquía de vue me permite colocar el main y luego mandar un componente o archivo vue anidado.
+- jugar con los ciclos de vue hooks onMounted y las propiedades reactivas ref.
+- las extensiones y settings del .vscode
+
 https://stackblitz.com/edit/angular-zkpdzeso-having-a-problem-loading-setti-sl2qiekl?file=src%2Fapp%2Fhello.component.ts
 
 https://stackoverflow.com/questions/59295824/having-a-problem-loading-setting-webgl-to-the-createcanvas-method-in-p5-js

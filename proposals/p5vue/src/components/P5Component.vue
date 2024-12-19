@@ -1,37 +1,40 @@
 <script setup>
-import { ref, onMounted } from "vue"
-import p5 from "p5"
+import p5 from 'p5';
+import { onMounted, ref } from 'vue';
 
 // const canvas = ref()
-const sketch = ref()
+const sketch = ref();
 // const { skt } = defineProps(["sketch"])
 
-const id = Date.now().toString()
+const id = new Date().toLocaleDateString();
 
 onMounted(() => {
-    //   const newP5 = new p5(sketch, canvas.value)
-    console.log(p5) // it's found
-    sketch.value = ( s ) => {
-    let x = 100;
-    let y = 100;
-  
-    s.setup = () => {
-    //   s.createCanvas(canvas.value);
-      s.createCanvas(200, 200);
-      // sketch.createCanvas(100, 100, WEBGL);
+  sketch.value = (s) => {
+    let x = 0;
+    let y = 0;
+    let z = 0;
+    s.setup = function () {
+      s.createCanvas(100, 100, this.WEBGL);
     };
-  
     s.draw = () => {
-      s.background(0);
+      // s.background(0);
+      s.background(255);
+      // Enable orbiting with the mouse.
+      s.orbitControl();
+      // Set the style's sphere.
+      // s.noStroke();
+      s.stroke(0, 255, 0);
       s.fill(255);
-      s.rect(x,y,50,50);
+      s.translate(x, y, z);
+      // Draw the sphere.
+      // Set its radius to 30.
+      s.sphere(30);
     };
-  };  
-//   let myp5 = new p5(sketch.value, canvas.value);
-let myp5 = new p5(sketch.value);
-  console.log(myp5)
-})
-
+  };
+  // let myp5 = new p5(sketch.value, canvas.value);
+  // new p5(sketch.value, canvas.value);
+  new p5(sketch.value);
+});
 </script>
 
 <template>
