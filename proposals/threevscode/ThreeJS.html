@@ -75,8 +75,8 @@
       const near = 0.1;
       const far = 1000;
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(0, 0, 0);
-      // camera.position.z = 100;
+      // camera.position.set(0, 0, 0);
+      camera.position.z = 2;
       // camera.lookAt( 0, 0, 0 );
 
       const scene = new THREE.Scene();
@@ -229,6 +229,7 @@
       main();
       console.log('ay')
     } else {
+      // TODO: estandarizar warningPage
       const warning = WebGL.getWebGL2ErrorMessage();
       document.querySelector('main').appendChild(warning);
     }
