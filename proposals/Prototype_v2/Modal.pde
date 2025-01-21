@@ -19,7 +19,7 @@
  */
 class Modal {
   // si el ancho de la pantalla es mayor
-  // TODO: fix esta función
+  // arreglar esta función
   boolean fullScreen = width > 1366;
 
   /** Propiedades Diálogo */
@@ -153,7 +153,7 @@ class Modal {
   }
 
   /**
-   * TODO: arreglar esta función
+   * Arreglar esta función
    * Método para redimensionar y reposicionar todo, si el ancho de la 
    * pantalla está fullscreen.
    */

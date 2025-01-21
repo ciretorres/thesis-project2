@@ -2,9 +2,7 @@
 import p5 from 'p5';
 import { onMounted, ref } from 'vue';
 
-// const canvas = ref()
 const sketch = ref();
-// const { skt } = defineProps(["sketch"])
 
 const id = new Date().toLocaleDateString();
 
@@ -38,5 +36,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="canvas" :id="id"></div>
+  <div ref="canvas" :id="id">P5Component</div>
 </template>

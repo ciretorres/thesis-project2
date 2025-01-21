@@ -6,11 +6,8 @@ import P5Component from './components/P5Component.vue';
 // import WebGL from 'three/addons/capabilities/WebGL.js';
 // const webGL = WebGL
 const sketch = ref();
-const canvas = ref();
 
 const generateSketch = () => {
-  // canvas.value = document.querySelector('#e');
-  // console.log(canvas.value);
   sketch.value = (s) => {
     let x = 0;
     let y = 0;
@@ -69,8 +66,6 @@ onMounted(() => {
 <template>
   <main>
     Hola
-    <!-- TODO: cómo conectar un canvas -->
-    <canvas id="e"></canvas>
     <P5Component />
   </main>
 </template>

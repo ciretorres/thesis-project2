@@ -39,7 +39,7 @@ class HeadsUpDisplay {
      */  
     camera.beginHUD();
     //
-    // TODO: mostrar controlador de dialogo
+    // mostrar controlador de dialogo
     controladorDialogo.mostrar();
 
     // abrir modal
@@ -64,7 +64,7 @@ class HeadsUpDisplay {
     modalBienvenida.titulo = "Bievenida";
     modalBienvenida.texto = "";
     // btn instrucciones
-    modalBienvenida.conBtnInferiorUno = true; // TODO: modalBienvenida.conBtnInferiorUno
+    modalBienvenida.conBtnInferiorUno = true; 
     modalBienvenida.btnInferiorUnoId = "idBtnInstrucciones";     
     modalBienvenida.btnInferiorUnoColorFondo = color(255, 255, 255, 0);
     modalBienvenida.btnInferiorUnoTexto = "Instrucciones"; 
@@ -94,7 +94,7 @@ class HeadsUpDisplay {
     modalInstrucciones.btnForma = "circle";
     modalInstrucciones.btnCerrarFondoColor = color(255);
     modalInstrucciones.btnCerrarTamanio = 88;
-    // TODO: insertar iconos
+    // insertar iconos
 
   }
   

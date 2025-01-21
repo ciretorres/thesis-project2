@@ -49,9 +49,9 @@ void setup() {
   frameRate(60); // rango de cuadros por segundos
   smooth();
 
-  // TODO: Cargar tipografía
-  // TODO: Cargar iconos
-  // TODO: Cargar estrellas
+  // Cargar tipografía
+  // Cargar iconos
+  // Cargar estrellas
 
   // iniciando cámara
   camera = new PeasyCam(this, distanciaCamera);
@@ -70,7 +70,7 @@ void draw() {
    * @see https://processing.org/reference/popMatrix_.html
    */
   pushMatrix();
-  // TODO: muestrar las estrellas
+  // Mostrar las estrellas
 
   // muestra la HeadsUpDisplay
   HUD.display();

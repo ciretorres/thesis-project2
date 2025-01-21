@@ -229,9 +229,19 @@
       main();
       console.log('ay')
     } else {
-      // TODO: estandarizar warningPage
       const warning = WebGL.getWebGL2ErrorMessage();
-      document.querySelector('main').appendChild(warning);
+      const divElement = document.createElement("div");
+      divElement.innerHTML += `
+        <h2>
+          Tu tarjeta gráfica no soporta 
+          <a 
+            href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" 
+            target="_blank" 
+            rel="noopener noreferrer">
+            WebGL 2
+          </a>
+        </h2>`
+      document.querySelector('main').appendChild(warning).appendChild(divElement);
     }
 
 
