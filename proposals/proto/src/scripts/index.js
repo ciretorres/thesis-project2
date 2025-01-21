@@ -45,6 +45,10 @@ function init() {
     return luz;
   }
   function obtenerGeometria(gui) {
+    /**
+     * @see https://threejs.org/docs/#api/en/geometries/SphereGeometry
+     */
+
     const twoPi = Math.PI * 2;
     const props = {
       // radius: 1,
@@ -185,25 +189,35 @@ function init() {
     main();
     console.log(WebGL.isWebGL2Available());
   } else {
-    // TODO: estandarizar AdvertenciaWebGLNoCompatible
+    // Mostrar mensaje de Advertencia WebGL no compatible
     const warning = WebGL.getWebGL2ErrorMessage();
     document.querySelector("main").appendChild(warning);
     //
-    // const element = document.createElement("h1");
-    const element = document.createElement("h2");
-    const textNode = document.createTextNode("Tu tarjeta gráfica no soporta ");
-    element.append(textNode);
-    const elementAnchor = document.createElement("a");
-    elementAnchor.href =
-      "http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation";
-    elementAnchor.target = "_blank";
-    elementAnchor.rel = "noopener noreferrer";
-    const textNodeAnchor = document.createTextNode("WebGL 2");
-    elementAnchor.append(textNodeAnchor);
+    // // const element = document.createElement("h1");
+    // const element = document.createElement("h2");
+    // const textNode = document.createTextNode("Tu tarjeta gráfica no soporta ");
+    // element.append(textNode);
+    // const elementAnchor = document.createElement("a");
+    // elementAnchor.href =
+    //   "http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation";
+    // elementAnchor.target = "_blank";
+    // elementAnchor.rel = "noopener noreferrer";
+    // const textNodeAnchor = document.createTextNode("WebGL 2");
+    // elementAnchor.append(textNodeAnchor);
+    const AdvertenciaWebGLNoCompatible = document.createElement("div");
+    AdvertenciaWebGLNoCompatible.innerHTML += `
+        <h2>
+          Tu tarjeta gráfica no soporta 
+          <a 
+            href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" 
+            target="_blank" 
+            rel="noopener noreferrer">
+            WebGL 2
+          </a>
+        </h2>`;
     document
       .querySelector("#webglmessage")
-      .appendChild(element)
-      .appendChild(elementAnchor);
+      .appendChild(AdvertenciaWebGLNoCompatible);
   }
 }
 
